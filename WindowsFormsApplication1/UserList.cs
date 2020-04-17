@@ -30,7 +30,7 @@ namespace WindowsFormsApplication1
             string where = "WHERE 1";
             if (tb_search_id.Text != "")
             {
-                where += " AND id LIKE '%" + tb_search_id.Text + "%'";
+                where += " AND user_id LIKE '%" + tb_search_id.Text + "%'";
             }
             if (tb_search_name.Text != "")
             {

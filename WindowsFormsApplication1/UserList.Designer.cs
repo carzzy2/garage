@@ -64,7 +64,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.button2.Location = new System.Drawing.Point(67, 321);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 30);
+            this.button2.Size = new System.Drawing.Size(116, 41);
             this.button2.TabIndex = 10;
             this.button2.Text = "เพิ่มข้อมูลใหม่";
             this.button2.UseVisualStyleBackColor = true;
