@@ -11,14 +11,14 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class UserList : Form
+    public partial class SparesList : Form
     {
-        public UserList()
+        public SparesList()
         {
             InitializeComponent();
         }
         private MySqlConnection conn;
-        private void UserList_Load(object sender, EventArgs e)
+        private void SparesList_Load(object sender, EventArgs e)
         {
             this.RenderGrid();
         }
@@ -29,19 +29,16 @@ namespace WindowsFormsApplication1
             MySqlDataAdapter MyDA = new MySqlDataAdapter();
             string where = "WHERE 1";
 
-            if (tb_search_name.Text != "")
+            if (tb_search_spares_name.Text != "")
             {
-                where += " AND fullname LIKE '%" + tb_search_name.Text + "%'";
+                where += " AND spares_name LIKE '%" + tb_search_spares_name.Text + "%'";
             }
-            if (tb_search_type.Text != "")
+            if (tb_search_spares_unit.Text != "")
             {
-                where += " AND type LIKE '%" + tb_search_type.Text + "%'";
+                where += " AND spares_unit LIKE '%" + tb_search_spares_unit.Text + "%'";
             }
-            if (tb_search_sex.Text != "")
-            {
-                where += " AND sex LIKE '%" + tb_search_sex.Text + "%'";
-            }
-            string sqlSelectAll = "SELECT user_id,fullname,sex,tel,type,'แก้ไข' AS btn_edit,'ลบ' AS btn_del from users " + where + " ORDER BY user_id DESC";
+
+            string sqlSelectAll = "SELECT spares_id,spares_name,spares_qty,spares_unit,spares_cost_price,spares_unit_price,spares_detail,'แก้ไข' AS btn_edit,'ลบ' AS btn_del from tb_spares " + where + " ORDER BY spares_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -54,28 +51,32 @@ namespace WindowsFormsApplication1
 
             ///ปรับแต่งข้อความ header ของ gridview
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[0].Width = 170;
+            dataGridView1.Columns[0].Width = 120;
             dataGridView1.Columns[1].HeaderText = "ชื่อ";
-            dataGridView1.Columns[1].Width = 170;
-            dataGridView1.Columns[2].HeaderText = "เพศ";
-            dataGridView1.Columns[2].Width = 100;
-            dataGridView1.Columns[3].HeaderText = "โทรศัพท์";
-            dataGridView1.Columns[3].Width = 150;
-            dataGridView1.Columns[5].Width = 200;
-            dataGridView1.Columns[4].HeaderText = "ประเภท";
-            dataGridView1.Columns[4].Width = 120;
-            dataGridView1.Columns[5].HeaderText = "";
-            dataGridView1.Columns[5].Width = 50;
-            dataGridView1.Columns[5].DefaultCellStyle.ForeColor = Color.Blue;
-            dataGridView1.Columns[5].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
-            dataGridView1.Columns[6].HeaderText = "";
-            dataGridView1.Columns[6].Width = 50;
-            dataGridView1.Columns[6].DefaultCellStyle.ForeColor = Color.Red;
-            dataGridView1.Columns[6].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            dataGridView1.Columns[1].Width = 140;
+            dataGridView1.Columns[2].HeaderText = "จำนวน";
+            dataGridView1.Columns[2].Width = 60;
+            dataGridView1.Columns[3].HeaderText = "หน่วยนับ";
+            dataGridView1.Columns[3].Width = 100;
+            dataGridView1.Columns[4].HeaderText = "ราคาต้นทุน";
+            dataGridView1.Columns[4].Width = 100;
+            dataGridView1.Columns[5].HeaderText = "ราคาขาย";
+            dataGridView1.Columns[5].Width = 80;
+            dataGridView1.Columns[6].HeaderText = "รายละเอียด";
+            dataGridView1.Columns[6].Width = 130;
+
+            dataGridView1.Columns[7].HeaderText = "";
+            dataGridView1.Columns[7].Width = 50;
+            dataGridView1.Columns[7].DefaultCellStyle.ForeColor = Color.Blue;
+            dataGridView1.Columns[7].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            dataGridView1.Columns[8].HeaderText = "";
+            dataGridView1.Columns[8].Width = 50;
+            dataGridView1.Columns[8].DefaultCellStyle.ForeColor = Color.Red;
+            dataGridView1.Columns[8].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            UserAdd acf = new UserAdd(this);
+            SparesAdd acf = new SparesAdd(this);
             acf.Show();
         }
 
@@ -85,7 +86,7 @@ namespace WindowsFormsApplication1
             try
             {
                 string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 8)
                 {
 
                     DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -94,9 +95,9 @@ namespace WindowsFormsApplication1
                         this.deleteData(id);
                     }
                 }
-                if (e.ColumnIndex == 5)
+                if (e.ColumnIndex == 7)
                 {
-                    UserAdd da = new UserAdd(this);
+                    SparesAdd da = new SparesAdd(this);
                     da.ID = id;
                     da.Show();
                 }
@@ -111,7 +112,7 @@ namespace WindowsFormsApplication1
         {
             if (id != "")
             {
-                string query = "DELETE FROM users WHERE user_id = @id";
+                string query = "DELETE FROM tb_spares WHERE spares_id = @id";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 conn.Open();
@@ -133,13 +134,6 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            
-            UserAdd acf = new UserAdd(this);
-            acf.Show();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.RenderGrid();
@@ -150,7 +144,7 @@ namespace WindowsFormsApplication1
             try
             {
                 string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 8)
                 {
 
                     DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -159,9 +153,9 @@ namespace WindowsFormsApplication1
                         this.deleteData(id);
                     }
                 }
-                if (e.ColumnIndex == 5)
+                if (e.ColumnIndex == 7)
                 {
-                    UserAdd da = new UserAdd(this);
+                    SparesAdd da = new SparesAdd(this);
                     da.ID = id;
                     da.Show();
                 }

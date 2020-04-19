@@ -110,11 +110,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CusAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CusAdd.Designer.cs">
+      <DependentUpon>CusAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SparesAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SparesAdd.Designer.cs">
+      <DependentUpon>SparesAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CusList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CusList.Designer.cs">
+      <DependentUpon>CusList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserAdd.Designer.cs">
       <DependentUpon>UserAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SparesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SparesList.Designer.cs">
+      <DependentUpon>SparesList.cs</DependentUpon>
     </Compile>
     <Compile Include="UserList.cs">
       <SubType>Form</SubType>
@@ -144,8 +168,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="CusAdd.resx">
+      <DependentUpon>CusAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SparesAdd.resx">
+      <DependentUpon>SparesAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CusList.resx">
+      <DependentUpon>CusList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserAdd.resx">
       <DependentUpon>UserAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SparesList.resx">
+      <DependentUpon>SparesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>

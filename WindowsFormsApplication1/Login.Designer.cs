@@ -44,7 +44,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(377, 154);
+            this.label2.Location = new System.Drawing.Point(356, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 24);
             this.label2.TabIndex = 12;
@@ -54,7 +54,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(307, 94);
+            this.label1.Location = new System.Drawing.Point(296, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(237, 31);
             this.label1.TabIndex = 11;
@@ -63,6 +63,7 @@
             // username
             // 
             this.username.Location = new System.Drawing.Point(12, 22);
+            this.username.MaxLength = 50;
             this.username.Multiline = true;
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(219, 25);
@@ -71,6 +72,7 @@
             // password
             // 
             this.password.Location = new System.Drawing.Point(13, 66);
+            this.password.MaxLength = 50;
             this.password.Multiline = true;
             this.password.Name = "password";
             this.password.PasswordChar = '*';
@@ -79,20 +81,21 @@
             // 
             // btn_login
             // 
-            this.btn_login.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_login.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_login.Location = new System.Drawing.Point(322, 322);
+            this.btn_login.Location = new System.Drawing.Point(302, 244);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(218, 34);
             this.btn_login.TabIndex = 16;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = false;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.username);
             this.groupBox1.Controls.Add(this.password);
-            this.groupBox1.Location = new System.Drawing.Point(309, 198);
+            this.groupBox1.Location = new System.Drawing.Point(289, 120);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(242, 100);
             this.groupBox1.TabIndex = 15;
@@ -101,7 +104,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(251, 267);
+            this.label4.Location = new System.Drawing.Point(231, 189);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 14;
@@ -110,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(249, 214);
+            this.label3.Location = new System.Drawing.Point(229, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 13;
@@ -120,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(802, 355);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_login);
@@ -129,6 +132,7 @@
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.groupBox1.ResumeLayout(false);

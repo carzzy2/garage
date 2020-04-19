@@ -11,11 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class UserAdd : Form
+    public partial class SparesAdd : Form
     {
-        private UserList FormUser;
+        private SparesList FormSpares;
         private MySqlConnection conn;
         private string id = "";
+        private int parsedValue;
 
         public string ID
         {
@@ -28,35 +29,33 @@ namespace WindowsFormsApplication1
                 this.id = value;
             }
         }
-        public UserAdd(UserList userAdd)
+        public SparesAdd(SparesList SparesAdd)
         {
-            this.FormUser = userAdd;
+            this.FormSpares = SparesAdd;
             InitializeComponent();
         }
 
-        private void UserAdd_Load(object sender, EventArgs e)
+        private void SparesAdd_Load(object sender, EventArgs e)
         {
             Connection connecttion = new Connection();
             conn = connecttion.Connect();
             if (this.id != "")
             {
 
-                string selectOne = "SELECT * from users WHERE user_id = @user_id LIMIT 1";
+                string selectOne = "SELECT * from tb_spares WHERE spares_id = @spares_id LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(selectOne, conn);
-                cmd.Parameters.AddWithValue("@user_id", this.id);
+                cmd.Parameters.AddWithValue("@spares_id", this.id);
                 cmd.CommandText = selectOne;
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    name.Text = reader.GetString("name");
-                    surname.Text = reader.GetString("surname");
-                    sex.Text = reader.GetString("sex");
-                    tel.Text = reader.GetString("tel");
-                    username.Text = reader.GetString("username");
-                    pass.Text = reader.GetString("password");
-                    pass_again.Text = reader.GetString("password");
-                    type.Text = reader.GetString("type");
+                    spares_name.Text = reader.GetString("spares_name");
+                    spares_qty.Text = reader.GetString("spares_qty");
+                    spares_unit_price.Text = reader.GetString("spares_unit_price");
+                    spares_unit.Text = reader.GetString("spares_unit");
+                    spares_cost_price.Text = reader.GetString("spares_cost_price");
+                    spares_detail.Text = reader.GetString("spares_detail");
 
                     btn_save.Text = "แก้ไข";
                 }
@@ -76,40 +75,42 @@ namespace WindowsFormsApplication1
 
         private void btn_save_Click_1(object sender, EventArgs e)
         {
-            if(name.Text == "" || surname.Text == "" || sex.Text == "" || tel.Text == "" || username.Text == "" || pass.Text == "" || pass_again.Text == "" || type.Text == "")
+            if(spares_name.Text == "" || spares_qty.Text == "" || spares_unit_price.Text == "" || spares_unit.Text == "" || spares_cost_price.Text == "" || spares_detail.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อมูลให้ครบทุกช่อง (*)");
                 return;
             }
-            if (pass.Text != pass_again.Text)
-            {
-                MessageBox.Show("รหัสผ่านไม่ตรงกัน");
-                return;
-            }
             ulong parsedValue;
-            if (!ulong.TryParse(tel.Text, out parsedValue))
+            if (!ulong.TryParse(spares_qty.Text, out parsedValue))
             {
                 MessageBox.Show("กรุณากรอกตัวเลขเท่านั้น");
                 return;
             }
-            
+            if (!ulong.TryParse(spares_unit_price.Text, out parsedValue))
+            {
+                MessageBox.Show("กรุณากรอกตัวเลขเท่านั้น");
+                return;
+            }
+            if (!ulong.TryParse(spares_cost_price.Text, out parsedValue))
+            {
+                MessageBox.Show("กรุณากรอกตัวเลขเท่านั้น");
+                return;
+            }
             else
             {
-                string query = "REPLACE INTO users (user_id,name,surname,fullname,type,tel,username,password,sex)" +
-                            " VALUES (@id,@name,@surname,@fullname,@type,@tel,@username,@password,@sex)";
+                string query = "REPLACE INTO tb_spares (spares_id,spares_name,spares_qty,spares_unit_price,spares_unit,spares_cost_price,spares_detail)" +
+                            " VALUES (@id,@spares_name,@spares_qty,@spares_unit_price,@spares_unit,@spares_cost_price,@spares_detail)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
                 string id = this.id == "" ? ln.ToString() : this.id;
 
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@name", name.Text);
-                cmd.Parameters.AddWithValue("@surname", surname.Text);
-                cmd.Parameters.AddWithValue("@fullname", name.Text + " " + surname.Text);
-                cmd.Parameters.AddWithValue("@type", type.Text);
-                cmd.Parameters.AddWithValue("@tel", tel.Text);
-                cmd.Parameters.AddWithValue("@username", username.Text);
-                cmd.Parameters.AddWithValue("@password", pass.Text);
-                cmd.Parameters.AddWithValue("@sex", sex.Text);
+                cmd.Parameters.AddWithValue("@spares_name", spares_name.Text);
+                cmd.Parameters.AddWithValue("@spares_qty", spares_qty.Text);
+                cmd.Parameters.AddWithValue("@spares_unit_price", spares_unit_price.Text);
+                cmd.Parameters.AddWithValue("@spares_unit", spares_unit.Text);
+                cmd.Parameters.AddWithValue("@spares_cost_price", spares_cost_price.Text);
+                cmd.Parameters.AddWithValue("@spares_detail", spares_detail.Text);
                 cmd.CommandText = query;
                 conn.Open();
                 try
@@ -119,7 +120,7 @@ namespace WindowsFormsApplication1
                     conn.Close();
 
                     string msg = this.id == "" ? "บันทีกข้อมูลเรียบร้อย" : "แก้ไขข้อมูลเรียบร้อย";
-                    this.FormUser.RenderGrid();
+                    this.FormSpares.RenderGrid();
                     MessageBox.Show(msg);
                     this.Close();
                 }
@@ -140,13 +141,13 @@ namespace WindowsFormsApplication1
                 DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dr == DialogResult.Yes)
                 {
-                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM users  WHERE  user_id = @user_id", conn);
-                    cmdDel.Parameters.AddWithValue("@user_id", this.id);
+                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM tb_spares  WHERE  spares_id = @spares_id", conn);
+                    cmdDel.Parameters.AddWithValue("@spares_id", this.id);
                     conn.Open();
                     cmdDel.ExecuteNonQuery();
                     cmdDel.Parameters.Clear();
                     conn.Close();
-                    this.FormUser.RenderGrid();
+                    this.FormSpares.RenderGrid();
                     MessageBox.Show("ลบข้อมูลเรียบร้อย");
                     this.Close();
                 }

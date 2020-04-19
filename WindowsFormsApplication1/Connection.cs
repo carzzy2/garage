@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 
             //String connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
 
-            String connectionString = "server=localhost;port=3306;user id=root; password=; database=garage1; SslMode=none;charset=utf8";
+            String connectionString = "server=localhost;port=3306;user=root; password=; database=garage1; SslMode=none;charset=utf8";
 
             MySqlConnection conn = new MySqlConnection(connectionString);
 

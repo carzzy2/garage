@@ -11,11 +11,12 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class UserAdd : Form
+    public partial class CusAdd : Form
     {
-        private UserList FormUser;
+        private CusList FormCus;
         private MySqlConnection conn;
         private string id = "";
+        private int parsedValue;
 
         public string ID
         {
@@ -28,35 +29,33 @@ namespace WindowsFormsApplication1
                 this.id = value;
             }
         }
-        public UserAdd(UserList userAdd)
+        public CusAdd(CusList CusAdd)
         {
-            this.FormUser = userAdd;
+            this.FormCus = CusAdd;
             InitializeComponent();
         }
 
-        private void UserAdd_Load(object sender, EventArgs e)
+        private void CusAdd_Load(object sender, EventArgs e)
         {
             Connection connecttion = new Connection();
             conn = connecttion.Connect();
             if (this.id != "")
             {
 
-                string selectOne = "SELECT * from users WHERE user_id = @user_id LIMIT 1";
+                string selectOne = "SELECT * from tb_customer WHERE cus_id = @cus_id LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(selectOne, conn);
-                cmd.Parameters.AddWithValue("@user_id", this.id);
+                cmd.Parameters.AddWithValue("@cus_id", this.id);
                 cmd.CommandText = selectOne;
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    name.Text = reader.GetString("name");
-                    surname.Text = reader.GetString("surname");
-                    sex.Text = reader.GetString("sex");
-                    tel.Text = reader.GetString("tel");
-                    username.Text = reader.GetString("username");
-                    pass.Text = reader.GetString("password");
-                    pass_again.Text = reader.GetString("password");
-                    type.Text = reader.GetString("type");
+                    cus_name.Text = reader.GetString("cus_name");
+                    cus_tel.Text = reader.GetString("cus_tel");
+                    cus_email.Text = reader.GetString("cus_email");
+                    cus_address.Text = reader.GetString("cus_address");
+                    cus_idcard.Text = reader.GetString("cus_idcard");
+                    car_symptoms.Text = reader.GetString("car_symptoms");
 
                     btn_save.Text = "แก้ไข";
                 }
@@ -76,40 +75,48 @@ namespace WindowsFormsApplication1
 
         private void btn_save_Click_1(object sender, EventArgs e)
         {
-            if(name.Text == "" || surname.Text == "" || sex.Text == "" || tel.Text == "" || username.Text == "" || pass.Text == "" || pass_again.Text == "" || type.Text == "")
+            if(cus_name.Text == "" || cus_tel.Text == "" || cus_email.Text == "" || cus_address.Text == "" || cus_idcard.Text == "" || car_symptoms.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อมูลให้ครบทุกช่อง (*)");
                 return;
             }
-            if (pass.Text != pass_again.Text)
-            {
-                MessageBox.Show("รหัสผ่านไม่ตรงกัน");
-                return;
-            }
             ulong parsedValue;
-            if (!ulong.TryParse(tel.Text, out parsedValue))
+            if (!ulong.TryParse(cus_tel.Text, out parsedValue))
             {
                 MessageBox.Show("กรุณากรอกตัวเลขเท่านั้น");
                 return;
             }
-            
+            if (!ulong.TryParse(cus_idcard.Text, out parsedValue))
+            {
+                MessageBox.Show("กรุณากรอกตัวเลขเท่านั้น");
+                return;
+            }
+            if (cus_idcard.Text.Length < 13)
+            {
+                MessageBox.Show("กรุณากรอกเลขประจำตัวบัตรประชาชนให้ครบ 13 หลัก");
+                return;
+            }
+            if (cus_tel.Text.Length < 9)
+            {
+                MessageBox.Show("กรุณากรอกเบอร์โทรศัพท์ให้ครบ 9 หรือ 10 หลัก");
+                return;
+            }
+
             else
             {
-                string query = "REPLACE INTO users (user_id,name,surname,fullname,type,tel,username,password,sex)" +
-                            " VALUES (@id,@name,@surname,@fullname,@type,@tel,@username,@password,@sex)";
+                string query = "REPLACE INTO tb_customer (cus_id,cus_name,cus_tel,cus_email,cus_address,cus_idcard,car_symptoms)" +
+                            " VALUES (@id,@cus_name,@cus_tel,@cus_email,@cus_address,@cus_idcard,@car_symptoms)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
                 string id = this.id == "" ? ln.ToString() : this.id;
 
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@name", name.Text);
-                cmd.Parameters.AddWithValue("@surname", surname.Text);
-                cmd.Parameters.AddWithValue("@fullname", name.Text + " " + surname.Text);
-                cmd.Parameters.AddWithValue("@type", type.Text);
-                cmd.Parameters.AddWithValue("@tel", tel.Text);
-                cmd.Parameters.AddWithValue("@username", username.Text);
-                cmd.Parameters.AddWithValue("@password", pass.Text);
-                cmd.Parameters.AddWithValue("@sex", sex.Text);
+                cmd.Parameters.AddWithValue("@cus_name", cus_name.Text);
+                cmd.Parameters.AddWithValue("@cus_tel", cus_tel.Text);
+                cmd.Parameters.AddWithValue("@cus_email", cus_email.Text);
+                cmd.Parameters.AddWithValue("@cus_address", cus_address.Text);
+                cmd.Parameters.AddWithValue("@cus_idcard", cus_idcard.Text);
+                cmd.Parameters.AddWithValue("@car_symptoms", car_symptoms.Text);
                 cmd.CommandText = query;
                 conn.Open();
                 try
@@ -119,7 +126,7 @@ namespace WindowsFormsApplication1
                     conn.Close();
 
                     string msg = this.id == "" ? "บันทีกข้อมูลเรียบร้อย" : "แก้ไขข้อมูลเรียบร้อย";
-                    this.FormUser.RenderGrid();
+                    this.FormCus.RenderGrid();
                     MessageBox.Show(msg);
                     this.Close();
                 }
@@ -140,13 +147,14 @@ namespace WindowsFormsApplication1
                 DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dr == DialogResult.Yes)
                 {
-                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM users  WHERE  user_id = @user_id", conn);
-                    cmdDel.Parameters.AddWithValue("@user_id", this.id);
+                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM tb_customer  WHERE  cus_id = @cus_id", conn);
+                    cmdDel.Parameters.AddWithValue("@cus_id", this.id);
                     conn.Open();
                     cmdDel.ExecuteNonQuery();
                     cmdDel.Parameters.Clear();
                     conn.Close();
-                    this.FormUser.RenderGrid();
+
+                    this.FormCus.RenderGrid();
                     MessageBox.Show("ลบข้อมูลเรียบร้อย");
                     this.Close();
                 }

@@ -40,12 +40,14 @@ namespace WindowsFormsApplication1
             while (reader.Read())
             {
                 string name = reader.GetString("name");
-                string[] user = new string[3];
+                string surname = reader.GetString("surname");
+                string[] user = new string[4];
 
                 user[0] = reader.GetString("user_id");
                 user[1] = reader.GetString("name");
                 user[2] = reader.GetString("type");
-                MessageBox.Show("ยืนดีต้อนรับ คุณ" + name + " เข้าสู่ระบบ");
+                user[3] = reader.GetString("surname");
+                MessageBox.Show("ยืนดีต้อนรับ คุณ" + name + " "+ surname + " เข้าสู่ระบบ");
 
                 Main ds = new Main(user);
                 ds.Show();
