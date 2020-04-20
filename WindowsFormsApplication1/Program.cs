@@ -16,12 +16,13 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            string[] user = new string[3];
+            string[] user = new string[4];
 
-            user[0] = "1";
+            user[0] = "63722579876780";
             user[1] = "admin";
             user[2] = "admin";
-            Application.Run(new Login());
+            user[3] = "ฝ่ายซ่อม";
+            Application.Run(new VerifyList());
         }
     }
 }

@@ -146,6 +146,18 @@
     <Compile Include="UserList.Designer.cs">
       <DependentUpon>UserList.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerifyAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerifyAdd.Designer.cs">
+      <DependentUpon>VerifyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerifyList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerifyList.Designer.cs">
+      <DependentUpon>VerifyList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomerAdd.resx">
       <DependentUpon>CustomerAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserList.resx">
       <DependentUpon>UserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerifyAdd.resx">
+      <DependentUpon>VerifyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerifyList.resx">
+      <DependentUpon>VerifyList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
