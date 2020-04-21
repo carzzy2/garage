@@ -116,6 +116,18 @@
     <Compile Include="CusAdd.Designer.cs">
       <DependentUpon>CusAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationAdd.Designer.cs">
+      <DependentUpon>QuotationAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationList.Designer.cs">
+      <DependentUpon>QuotationList.cs</DependentUpon>
+    </Compile>
     <Compile Include="SparesAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +164,12 @@
     <Compile Include="VerifyAdd.Designer.cs">
       <DependentUpon>VerifyAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="VerifyAddSpares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerifyAddSpares.Designer.cs">
+      <DependentUpon>VerifyAddSpares.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerifyList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +201,9 @@
     <EmbeddedResource Include="CusAdd.resx">
       <DependentUpon>CusAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuotationAdd.resx">
+      <DependentUpon>QuotationAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SparesAdd.resx">
       <DependentUpon>SparesAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VerifyAdd.resx">
       <DependentUpon>VerifyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerifyAddSpares.resx">
+      <DependentUpon>VerifyAddSpares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerifyList.resx">
       <DependentUpon>VerifyList.cs</DependentUpon>

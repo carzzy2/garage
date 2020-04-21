@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-04-19 00:22:28
+Date: 2020-04-21 23:27:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,6 +39,45 @@ INSERT INTO `customers` VALUES ('63722731858519', 'aaaa', 'aaa', 'aaaa aaa', 'aa
 INSERT INTO `customers` VALUES ('63722731921447', 'uuuu', 'uuuu', 'uuuu uuuu', 'uu', 'uuu');
 
 -- ----------------------------
+-- Table structure for spares
+-- ----------------------------
+DROP TABLE IF EXISTS `spares`;
+CREATE TABLE `spares` (
+  `spares_id` bigint(20) NOT NULL,
+  `spares_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `spares_qty` int(10) NOT NULL,
+  `spares_unit_price` double(10,2) NOT NULL,
+  `spares_unit` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `spares_cost_price` double(10,2) NOT NULL,
+  `spares_detail` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of spares
+-- ----------------------------
+INSERT INTO `spares` VALUES ('63722923210711', 'มอเตอร์', '10', '8000.00', 'ชุด', '4000.00', 'แม็กซิส');
+INSERT INTO `spares` VALUES ('63722923232866', 'แบตเตอรี่', '20', '2000.00', 'ลูก', '1000.00', 'FB');
+
+-- ----------------------------
+-- Table structure for tb_customer
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_customer`;
+CREATE TABLE `tb_customer` (
+  `cus_id` bigint(20) NOT NULL,
+  `cus_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `cus_tel` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `cus_email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `cus_address` text COLLATE utf8_unicode_ci NOT NULL,
+  `cus_idcard` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
+  `car_symptoms` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of tb_customer
+-- ----------------------------
+INSERT INTO `tb_customer` VALUES ('63722934136749', 'bank', '0845353332', 'bank@gmail.com', 'ขอนแก่น', '1409901341307', 'สตาร์ทรถไม่ติด');
+
+-- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
@@ -59,4 +98,39 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('63722315730374', 'test', 'asdasd', 'test asdasd', 'user', '0844', 'testt', '', 'หญิง');
-INSERT INTO `users` VALUES ('63722579876780', 'asdasdasd', 'asdasd', 'asdasdasd asdasd', 'user', '123123', 'qqqq', 'qqqq', 'ชาย');
+INSERT INTO `users` VALUES ('63722579876780', 'admin', 'admin', 'admin admin', 'ฝ่ายซ่อม', '123123', 'qqqq', 'qqqq', 'ชาย');
+
+-- ----------------------------
+-- Table structure for verify
+-- ----------------------------
+DROP TABLE IF EXISTS `verify`;
+CREATE TABLE `verify` (
+  `ver_id` bigint(20) NOT NULL,
+  `ver_date` datetime DEFAULT NULL,
+  `status` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `all_price` int(10) DEFAULT NULL,
+  `veh_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `veh_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `veh_symtom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`ver_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of verify
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for verify_item
+-- ----------------------------
+DROP TABLE IF EXISTS `verify_item`;
+CREATE TABLE `verify_item` (
+  `ver_id` bigint(20) NOT NULL,
+  `spares_id` bigint(20) NOT NULL,
+  `price` int(10) DEFAULT NULL,
+  `num` int(10) DEFAULT NULL,
+  PRIMARY KEY (`ver_id`,`spares_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of verify_item
+-- ----------------------------

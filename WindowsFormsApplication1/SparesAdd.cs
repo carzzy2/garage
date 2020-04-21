@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
             if (this.id != "")
             {
 
-                string selectOne = "SELECT * from tb_spares WHERE spares_id = @spares_id LIMIT 1";
+                string selectOne = "SELECT * from spares WHERE spares_id = @spares_id LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(selectOne, conn);
                 cmd.Parameters.AddWithValue("@spares_id", this.id);
                 cmd.CommandText = selectOne;
@@ -98,7 +98,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                string query = "REPLACE INTO tb_spares (spares_id,spares_name,spares_qty,spares_unit_price,spares_unit,spares_cost_price,spares_detail)" +
+                string query = "REPLACE INTO spares (spares_id,spares_name,spares_qty,spares_unit_price,spares_unit,spares_cost_price,spares_detail)" +
                             " VALUES (@id,@spares_name,@spares_qty,@spares_unit_price,@spares_unit,@spares_cost_price,@spares_detail)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
@@ -141,7 +141,7 @@ namespace WindowsFormsApplication1
                 DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dr == DialogResult.Yes)
                 {
-                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM tb_spares  WHERE  spares_id = @spares_id", conn);
+                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM spares  WHERE  spares_id = @spares_id", conn);
                     cmdDel.Parameters.AddWithValue("@spares_id", this.id);
                     conn.Open();
                     cmdDel.ExecuteNonQuery();

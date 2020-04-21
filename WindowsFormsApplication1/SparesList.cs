@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
                 where += " AND spares_unit LIKE '%" + tb_search_spares_unit.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT spares_id,spares_name,spares_qty,spares_unit,spares_cost_price,spares_unit_price,spares_detail,'แก้ไข' AS btn_edit,'ลบ' AS btn_del from tb_spares " + where + " ORDER BY spares_id DESC";
+            string sqlSelectAll = "SELECT spares_id,spares_name,spares_qty,spares_unit,spares_cost_price,spares_unit_price,spares_detail,'แก้ไข' AS btn_edit,'ลบ' AS btn_del from spares " + where + " ORDER BY spares_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -112,7 +112,7 @@ namespace WindowsFormsApplication1
         {
             if (id != "")
             {
-                string query = "DELETE FROM tb_spares WHERE spares_id = @id";
+                string query = "DELETE FROM spares WHERE spares_id = @id";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 conn.Open();
@@ -131,7 +131,6 @@ namespace WindowsFormsApplication1
                     conn.Close();
                 }
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
