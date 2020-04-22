@@ -204,6 +204,9 @@
     <EmbeddedResource Include="QuotationAdd.resx">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuotationList.resx">
+      <DependentUpon>QuotationList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SparesAdd.resx">
       <DependentUpon>SparesAdd.cs</DependentUpon>
     </EmbeddedResource>

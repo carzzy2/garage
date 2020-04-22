@@ -41,5 +41,10 @@ namespace WindowsFormsApplication1
             }
             conn.Close();
         }
+
+        private void cus_id_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

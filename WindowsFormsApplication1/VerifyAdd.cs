@@ -43,12 +43,21 @@ namespace WindowsFormsApplication1
         private void VerifyAdd_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
-
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-           
+
+            string sqlSelectAll = "select * from customers";
+            MySqlCommand cmd1 = new MySqlCommand(sqlSelectAll, conn);
+            conn.Open();
+            MySqlDataReader reader1 = cmd1.ExecuteReader();
+            while (reader1.Read())
+            {
+                cus_id.Items.Add(reader1.GetString("fullname"));
+            }
+
+            conn.Close();
             if (this.id != "")
             {
-
+                string cusid = "";
                 string selectOne = "SELECT * from verify WHERE ver_id = @id LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(selectOne, conn);
                 cmd.Parameters.AddWithValue("@id", this.id);
@@ -63,11 +72,23 @@ namespace WindowsFormsApplication1
                     veh_type.Text = reader.GetString("veh_type");
                     veh_type.Text = reader.GetString("veh_type");
                     veh_symtom.Text = reader.GetString("veh_symtom");
-
+                    cusid = reader.GetString("cus_id");
                     button1.Text = "แก้ไข";
                 }
                 conn.Close();
 
+
+                string selectOne2 = "SELECT * from customers WHERE cus_id = @id LIMIT 1";
+                MySqlCommand cmd2 = new MySqlCommand(selectOne2, conn);
+                cmd2.Parameters.AddWithValue("@id", cusid);
+                cmd2.CommandText = selectOne2;
+                conn.Open();
+                MySqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    cus_id.SelectedItem = reader2.GetString("fullname");
+                }
+                conn.Close();
             }
             else
             {
@@ -164,6 +185,13 @@ namespace WindowsFormsApplication1
             //tb_change.Text = c_cost.ToString();
             tb_change.Text = String.Format("{0:#,##0}", c_cost);
             hiddenval.Text = c_cost.ToString();
+            if (c_cost == 0)
+            {
+                button1.Enabled = false;
+            }
+            else {
+                button1.Enabled = true;
+            }
             conn.Close();
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -212,23 +240,44 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string query = "REPLACE INTO verify (ver_id,ver_date,status,all_price,veh_id,veh_type,veh_symtom)" +
-                                "VALUES(@id,NOW(),'NEW',@sumtotal,@veh_id,@veh_type,@veh_symtom)";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@id", this.id);
-            cmd.Parameters.AddWithValue("@sumtotal", this.hiddenval.Text);
-            cmd.Parameters.AddWithValue("@veh_id", veh_id.Text);
-            cmd.Parameters.AddWithValue("@veh_type", veh_type.Text);
-            cmd.Parameters.AddWithValue("@veh_symtom", veh_symtom.Text);
+            string cusid = "";
+            if (cus_id.Text == "กรุณาเลือก")
+            {
+                MessageBox.Show("กรุณาเลือกลูกค้า");
+            }
+            else {
+                string selectOne = "SELECT * from customers WHERE fullname = @name LIMIT 1";
+                MySqlCommand cmd1 = new MySqlCommand(selectOne, conn);
+                cmd1.Parameters.AddWithValue("@name", cus_id.Text);
+                cmd1.CommandText = selectOne;
+                conn.Open();
+                MySqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    cusid = reader1.GetString("cus_id");
+                }
+                conn.Close();
+                string query = "REPLACE INTO verify (ver_id,ver_date,status,all_price,veh_id,veh_type,veh_symtom,cus_id)" +
+                                    "VALUES(@id,NOW(),'NEW',@sumtotal,@veh_id,@veh_type,@veh_symtom,@cus_id)";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
 
-            cmd.CommandText = query;
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-            conn.Close();
-            MessageBox.Show("บันทึกข้อมูลเรียบร้อย");
-            this.Close();
-            this.Form.RenderGrid();
+                cmd.Parameters.AddWithValue("@id", this.id);
+                cmd.Parameters.AddWithValue("@sumtotal", this.hiddenval.Text);
+                cmd.Parameters.AddWithValue("@veh_id", veh_id.Text);
+                cmd.Parameters.AddWithValue("@veh_type", veh_type.Text);
+                cmd.Parameters.AddWithValue("@veh_symtom", veh_symtom.Text);
+                cmd.Parameters.AddWithValue("@cus_id", cusid);
+
+                cmd.CommandText = query;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                conn.Close();
+                MessageBox.Show("บันทึกข้อมูลเรียบร้อย");
+                this.Close();
+                this.Form.RenderGrid();
+            }
+           
         }
     }
 }

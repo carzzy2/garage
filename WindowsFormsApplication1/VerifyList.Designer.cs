@@ -116,7 +116,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Highlight;
             this.button2.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button2.Location = new System.Drawing.Point(805, 18);
+            this.button2.Location = new System.Drawing.Point(1069, 18);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 41);
             this.button2.TabIndex = 10;

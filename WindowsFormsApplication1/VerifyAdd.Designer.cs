@@ -47,6 +47,8 @@
             this.veh_id = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.veh_type = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cus_id = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -54,6 +56,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -255,11 +258,32 @@
             this.veh_type.Size = new System.Drawing.Size(261, 34);
             this.veh_type.TabIndex = 2;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cus_id);
+            this.groupBox8.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(555, 13);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(225, 62);
+            this.groupBox8.TabIndex = 43;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "ลูกค้า";
+            // 
+            // cus_id
+            // 
+            this.cus_id.FormattingEnabled = true;
+            this.cus_id.Location = new System.Drawing.Point(6, 22);
+            this.cus_id.Name = "cus_id";
+            this.cus_id.Size = new System.Drawing.Size(212, 34);
+            this.cus_id.TabIndex = 3;
+            this.cus_id.Text = "กรุณาเลือก";
+            // 
             // VerifyAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 735);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.tb_change);
@@ -287,6 +311,7 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,5 +337,7 @@
         private System.Windows.Forms.TextBox veh_id;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox veh_type;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.ComboBox cus_id;
     }
 }

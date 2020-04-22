@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-04-21 23:27:57
+Date: 2020-04-22 23:36:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,12 +112,15 @@ CREATE TABLE `verify` (
   `veh_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `veh_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `veh_symtom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cus_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`ver_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of verify
 -- ----------------------------
+INSERT INTO `verify` VALUES ('63723191729167', '2020-04-22 22:46:40', 'NEW', '8000', 'asdasd', 'asda', 'sdasdasd', '63722731817948');
+INSERT INTO `verify` VALUES ('63723192679341', '2020-04-22 22:51:26', 'NEW', '8000', 'asdas', 'asdas', 'asdasdasd', '63722731817948');
 
 -- ----------------------------
 -- Table structure for verify_item
@@ -134,3 +137,9 @@ CREATE TABLE `verify_item` (
 -- ----------------------------
 -- Records of verify_item
 -- ----------------------------
+INSERT INTO `verify_item` VALUES ('63723191729167', '63722923210711', '8000', '1');
+INSERT INTO `verify_item` VALUES ('63723191698018', '63722923232866', '2000', '5');
+INSERT INTO `verify_item` VALUES ('63723192554759', '63722923232866', '2000', '1');
+INSERT INTO `verify_item` VALUES ('63723192651190', '63722923232866', '2000', '1');
+INSERT INTO `verify_item` VALUES ('63723192679341', '63722923210711', '8000', '1');
+INSERT INTO `verify_item` VALUES ('63723192790242', '63722923232866', '2000', '1');
