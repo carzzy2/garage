@@ -155,6 +155,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerifyAddSpares";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "เพิ่มอะไหล่";
             this.Load += new System.EventHandler(this.VerifyAddSpares_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nb_m_num)).EndInit();

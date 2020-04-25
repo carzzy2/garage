@@ -11,24 +11,24 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class QuotationList : Form
+    public partial class GetSpareList : Form
     {
         private MySqlConnection conn;
-        public QuotationList()
+        public GetSpareList()
         {
             InitializeComponent();
         }
-        private void QuotationList_Load(object sender, EventArgs e)
-        {
-            this.RenderGrid();
 
-        }
         private void button2_Click(object sender, EventArgs e)
         {
-            QuotationAdd form = new QuotationAdd(this);
-            form.Show();
+            เบิกอะไหล่ fm = new เบิกอะไหล่(this);
+            fm.Show();
         }
 
+        private void GetSpareList_Load(object sender, EventArgs e)
+        {
+            this.RenderGrid();
+        }
         public void RenderGrid()
         {
             Connection connect = new Connection();
@@ -41,9 +41,9 @@ namespace WindowsFormsApplication1
                 where += " AND ver_id LIKE '%" + search.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT quo_id,quo_date,veh_id,veh_type,veh_symtom,format(price,0),'พิมพ์' AS btn_print,'ดู' as btn_view " +
-                "from quotation " +
-                "INNER JOIN verify on verify.ver_id = quotation.ver_id " + where + " ORDER BY quo_id DESC";
+            string sqlSelectAll = "SELECT get_id,get_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'พิมพ์' AS btn_print,'ดู' as btn_view " +
+                "from get_spares " +
+                "INNER JOIN verify on verify.ver_id = get_spares.ver_id " + where + " ORDER BY get_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -84,16 +84,15 @@ namespace WindowsFormsApplication1
             string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             if (e.ColumnIndex == 7)
             {
-                QuotationAdd da = new QuotationAdd(this);
+                เบิกอะไหล่ da = new เบิกอะไหล่(this);
                 da.ID = id;
                 da.Show();
             }
             if (e.ColumnIndex == 6)
             {
-               
+
             }
         }
-
 
     }
 }

@@ -140,6 +140,18 @@
     <Compile Include="CusList.Designer.cs">
       <DependentUpon>CusList.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetSpareAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetSpareAdd.Designer.cs">
+      <DependentUpon>GetSpareAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetSpareList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetSpareList.Designer.cs">
+      <DependentUpon>GetSpareList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +224,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CusList.resx">
       <DependentUpon>CusList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetSpareAdd.resx">
+      <DependentUpon>GetSpareAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetSpareList.resx">
+      <DependentUpon>GetSpareList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdd.resx">
       <DependentUpon>UserAdd.cs</DependentUpon>

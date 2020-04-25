@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace WindowsFormsApplication1
 {
-    public partial class QuotationAdd : Form
+    public partial class GetSpareAdd : Form
     {
-        private QuotationList Form;
+        private GetSpareList Form;
         private MySqlConnection conn;
         private string id = "";
         public string ID
@@ -27,16 +28,17 @@ namespace WindowsFormsApplication1
                 this.id = value;
             }
         }
-        public QuotationAdd(QuotationList FormAdd)
+        public GetSpareAdd(GetSpareList FormAdd)
         {
             Connection connect = new Connection();
             conn = connect.Connect();
 
             this.Form = FormAdd;
+
             InitializeComponent();
         }
 
-        private void QuotationAdd_Load(object sender, EventArgs e)
+        private void GetSpareAdd_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
@@ -55,8 +57,8 @@ namespace WindowsFormsApplication1
 
                 string cusid = "";
                 string verid = "";
-                string selectOne1 = "SELECT verify.*,quotation.quo_id,quotation.quo_date from verify " +
-                    "INNER JOIN quotation on quotation.ver_id = verify.ver_id  WHERE quotation.quo_id = @id LIMIT 1";
+                string selectOne1 = "SELECT verify.*,get_id,get_date from verify " +
+                    "INNER JOIN get_spares on get_spares.ver_id = verify.ver_id  WHERE get_spares.get_id = @id LIMIT 1";
                 MySqlCommand cmd1 = new MySqlCommand(selectOne1, conn);
                 cmd1.Parameters.AddWithValue("@id", this.id);
                 cmd1.CommandText = selectOne1;
@@ -64,11 +66,10 @@ namespace WindowsFormsApplication1
                 MySqlDataReader reader1 = cmd1.ExecuteReader();
                 while (reader1.Read())
                 {
-                    quo_id.Text = reader1.GetString("quo_id");
-                    dateTimePicker1.Text = reader1.GetString("quo_date");
+                    get_id.Text = reader1.GetString("get_id");
+                    dateTimePicker1.Text = reader1.GetString("get_date");
                     veh_id.Text = reader1.GetString("veh_id");
                     veh_type.Text = reader1.GetString("veh_type");
-                    veh_symtom.Text = reader1.GetString("veh_symtom");
                     cusid = reader1.GetString("cus_id");
                     verid = reader1.GetString("ver_id");
 
@@ -91,7 +92,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                string sqlSelectAll = "select * from verify where status ='NEW'";
+                string sqlSelectAll = "select * from verify where status ='QUOTATION'";
                 MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -104,11 +105,10 @@ namespace WindowsFormsApplication1
                 string id = this.id == "" ? ln.ToString() : this.id;
                 this.id = id;
             }
-            quo_id.Text = id;
+            get_id.Text = id;
             this.RenderGrid();
         }
-
-        private void cus_id_SelectedIndexChanged(object sender, EventArgs e)
+        private void ver_id_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sqlSelectAll = "select verify.*,customers.fullname from verify inner join customers on customers.cus_id = verify.cus_id where ver_id =" + ver_id.Text;
             MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
@@ -118,7 +118,6 @@ namespace WindowsFormsApplication1
             {
                 veh_id.Text = reader.GetString("veh_id");
                 veh_type.Text = reader.GetString("veh_type");
-                veh_symtom.Text = reader.GetString("veh_symtom");
                 cusname.Text = reader.GetString("fullname");
 
             }
@@ -193,21 +192,19 @@ namespace WindowsFormsApplication1
             string id = ln.ToString();
 
 
-            string query = "REPLACE INTO quotation (quo_id,quo_date,ver_id,price)" +
-                                "VALUES(@id,NOW(),@ver_id,@price)";
+            string query = "REPLACE INTO get_spares (get_id,get_date,ver_id)" +
+                                "VALUES(@id,NOW(),@ver_id)";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@price", this.hiddenval.Text);
             cmd.Parameters.AddWithValue("@ver_id", ver_id.Text);
-
             cmd.CommandText = query;
             conn.Open();
             cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
             conn.Close();
 
-            string query1 = "update verify set status ='QUOTATION' where ver_id=@id";
+            string query1 = "update verify set status ='GETSPARES' where ver_id=@id";
             MySqlCommand cmd1 = new MySqlCommand(query1, conn);
             cmd1.Parameters.AddWithValue("@id", ver_id.Text);
             cmd1.CommandText = query1;
@@ -215,10 +212,29 @@ namespace WindowsFormsApplication1
             cmd1.ExecuteNonQuery();
             cmd1.Parameters.Clear();
             conn.Close();
-
+            this.Update_Spares();
             MessageBox.Show("บันทึกข้อมูลเรียบร้อย");
             this.Close();
             this.Form.RenderGrid();
+        }
+
+        public void Update_Spares()
+        {
+            conn.Open();
+            string query = "update spares a " +
+                            "INNER JOIN verify_item b on a.spares_id = b.spares_id " +
+                            "SET a.spares_qty = a.spares_qty - b.num where b.ver_id = @ver_id ";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@ver_id", ver_id.Text);
+            cmd.CommandText = query;
+            cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            conn.Close();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

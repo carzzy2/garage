@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-04-22 23:36:45
+Date: 2020-04-25 20:46:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,6 +39,58 @@ INSERT INTO `customers` VALUES ('63722731858519', 'aaaa', 'aaa', 'aaaa aaa', 'aa
 INSERT INTO `customers` VALUES ('63722731921447', 'uuuu', 'uuuu', 'uuuu uuuu', 'uu', 'uuu');
 
 -- ----------------------------
+-- Table structure for get_spares
+-- ----------------------------
+DROP TABLE IF EXISTS `get_spares`;
+CREATE TABLE `get_spares` (
+  `get_id` bigint(20) NOT NULL,
+  `get_date` datetime DEFAULT NULL,
+  `ver_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`get_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of get_spares
+-- ----------------------------
+INSERT INTO `get_spares` VALUES ('63723439421425', '2020-04-25 19:23:41', '63723192679341');
+INSERT INTO `get_spares` VALUES ('63723439452946', '2020-04-25 19:24:12', '63723191729167');
+INSERT INTO `get_spares` VALUES ('63723439464332', '2020-04-25 19:24:24', '63723352298441');
+
+-- ----------------------------
+-- Table structure for quotation
+-- ----------------------------
+DROP TABLE IF EXISTS `quotation`;
+CREATE TABLE `quotation` (
+  `quo_id` bigint(20) NOT NULL,
+  `quo_date` datetime DEFAULT NULL,
+  `ver_id` bigint(20) DEFAULT NULL,
+  `price` int(10) DEFAULT NULL,
+  PRIMARY KEY (`quo_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of quotation
+-- ----------------------------
+INSERT INTO `quotation` VALUES ('63723358497899', '2020-04-24 20:54:57', '63723192679341', '8000');
+INSERT INTO `quotation` VALUES ('63723361621695', '2020-04-24 21:47:01', '63723192679341', '8000');
+INSERT INTO `quotation` VALUES ('63723361754250', '2020-04-24 21:49:14', '63723352298441', '2000');
+
+-- ----------------------------
+-- Table structure for repairs
+-- ----------------------------
+DROP TABLE IF EXISTS `repairs`;
+CREATE TABLE `repairs` (
+  `rep_id` bigint(20) NOT NULL,
+  `rep_date` datetime DEFAULT NULL,
+  `ver_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`rep_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of repairs
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for spares
 -- ----------------------------
 DROP TABLE IF EXISTS `spares`;
@@ -55,8 +107,8 @@ CREATE TABLE `spares` (
 -- ----------------------------
 -- Records of spares
 -- ----------------------------
-INSERT INTO `spares` VALUES ('63722923210711', 'มอเตอร์', '10', '8000.00', 'ชุด', '4000.00', 'แม็กซิส');
-INSERT INTO `spares` VALUES ('63722923232866', 'แบตเตอรี่', '20', '2000.00', 'ลูก', '1000.00', 'FB');
+INSERT INTO `spares` VALUES ('63722923210711', 'มอเตอร์', '9', '8000.00', 'ชุด', '4000.00', 'แม็กซิส');
+INSERT INTO `spares` VALUES ('63722923232866', 'แบตเตอรี่', '19', '2000.00', 'ลูก', '1000.00', 'FB');
 
 -- ----------------------------
 -- Table structure for tb_customer
@@ -119,8 +171,9 @@ CREATE TABLE `verify` (
 -- ----------------------------
 -- Records of verify
 -- ----------------------------
-INSERT INTO `verify` VALUES ('63723191729167', '2020-04-22 22:46:40', 'NEW', '8000', 'asdasd', 'asda', 'sdasdasd', '63722731817948');
-INSERT INTO `verify` VALUES ('63723192679341', '2020-04-22 22:51:26', 'NEW', '8000', 'asdas', 'asdas', 'asdasdasd', '63722731817948');
+INSERT INTO `verify` VALUES ('63723191729167', '2020-04-22 22:46:40', 'GETSPARES', '8000', 'asdasd', 'asda', 'sdasdasd', '63722731817948');
+INSERT INTO `verify` VALUES ('63723192679341', '2020-04-22 22:51:26', 'GETSPARES', '8000', 'asdas', 'asdas', 'asdasdasd', '63722731817948');
+INSERT INTO `verify` VALUES ('63723352298441', '2020-04-24 19:11:50', 'GETSPARES', '2000', 'หกดเกดเ', 'เกด้้', 'ดเกดเก', '63722731804616');
 
 -- ----------------------------
 -- Table structure for verify_item
@@ -143,3 +196,4 @@ INSERT INTO `verify_item` VALUES ('63723192554759', '63722923232866', '2000', '1
 INSERT INTO `verify_item` VALUES ('63723192651190', '63722923232866', '2000', '1');
 INSERT INTO `verify_item` VALUES ('63723192679341', '63722923210711', '8000', '1');
 INSERT INTO `verify_item` VALUES ('63723192790242', '63722923232866', '2000', '1');
+INSERT INTO `verify_item` VALUES ('63723352298441', '63722923232866', '2000', '1');

@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
             user[1] = "admin";
             user[2] = "admin";
             user[3] = "ฝ่ายซ่อม";
-            Application.Run(new VerifyList());
+            Application.Run(new GetSpareList());
         }
     }
 }

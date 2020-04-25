@@ -150,9 +150,9 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Orange;
             this.button3.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button3.Location = new System.Drawing.Point(527, 637);
+            this.button3.Location = new System.Drawing.Point(527, 640);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 41);
+            this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 39;
             this.button3.Text = "ยกเลิก";
             this.button3.UseVisualStyleBackColor = false;
@@ -298,6 +298,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerifyAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "เพิ่ม";
             this.Load += new System.EventHandler(this.VerifyAdd_Load);
             this.groupBox1.ResumeLayout(false);
