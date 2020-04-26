@@ -110,8 +110,8 @@ namespace WindowsFormsApplication1
         {
             if (this.user[2].ToString() == "เจ้าของกิจการ")
             {
-                //SparesList fm = new SparesList();
-                //fm.Show();
+                QuotationList fm = new QuotationList();
+                fm.Show();
             }
             else
             {
@@ -124,8 +124,8 @@ namespace WindowsFormsApplication1
         {
             if (this.user[2].ToString() == "ฝ่ายซ่อม")
             {
-                //SparesList fm = new SparesList();
-                //fm.Show();
+                VerifyList fm = new VerifyList();
+                fm.Show();
             }
             else
             {
@@ -137,6 +137,34 @@ namespace WindowsFormsApplication1
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (this.user[2].ToString() == "ฝ่ายซ่อม")
+            {
+                GetSpareList fm = new GetSpareList();
+                fm.Show();
+            }
+            else
+            {
+                MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
+                return;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (this.user[2].ToString() == "ฝ่ายซ่อม")
+            {
+                RepairList fm = new RepairList();
+                fm.Show();
+            }
+            else
+            {
+                MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
+                return;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class GetSpareList
+    partial class PayList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GetSpareList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PayList));
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -53,9 +53,9 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(29, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 33);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "เบิกอะไหล่";
+            this.label4.Size = new System.Drawing.Size(119, 33);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "รายการชำระเงิน";
             // 
             // groupBox1
             // 
@@ -64,7 +64,7 @@
             this.groupBox1.Location = new System.Drawing.Point(29, 147);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1191, 383);
-            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "รายการ";
             // 
@@ -79,7 +79,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1179, 343);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CelltClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button2
             // 
@@ -135,10 +134,10 @@
             this.groupBox2.Location = new System.Drawing.Point(29, 67);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1191, 74);
-            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             // 
-            // GetSpareList
+            // PayList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,10 +146,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "GetSpareList";
+            this.Name = "PayList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "รายการเบิกอะไหล่";
-            this.Load += new System.EventHandler(this.GetSpareList_Load);
+            this.Text = "รายการชำระเงิน";
+            this.Load += new System.EventHandler(this.PayList_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);

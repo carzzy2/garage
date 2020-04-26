@@ -8,13 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using CrystalDecisions.CrystalReports.Engine;
 
 namespace WindowsFormsApplication1
 {
-    public partial class QuotationAdd : Form
+    public partial class RepairAdd : Form
     {
-        private QuotationList Form;
+        private RepairList Form;
         private MySqlConnection conn;
         private string id = "";
         public string ID
@@ -28,7 +27,7 @@ namespace WindowsFormsApplication1
                 this.id = value;
             }
         }
-        public QuotationAdd(QuotationList FormAdd)
+        public RepairAdd(RepairList FormAdd)
         {
             Connection connect = new Connection();
             conn = connect.Connect();
@@ -37,7 +36,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void QuotationAdd_Load(object sender, EventArgs e)
+        private void RepairAdd_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
@@ -56,8 +55,8 @@ namespace WindowsFormsApplication1
 
                 string cusid = "";
                 string verid = "";
-                string selectOne1 = "SELECT verify.*,quotation.quo_id,quotation.quo_date from verify " +
-                    "INNER JOIN quotation on quotation.ver_id = verify.ver_id  WHERE quotation.quo_id = @id LIMIT 1";
+                string selectOne1 = "SELECT verify.*,repairs.rep_id,repairs.rep_date,detail from verify " +
+                    "INNER JOIN repairs on repairs.ver_id = verify.ver_id  WHERE repairs.rep_id = @id LIMIT 1";
                 MySqlCommand cmd1 = new MySqlCommand(selectOne1, conn);
                 cmd1.Parameters.AddWithValue("@id", this.id);
                 cmd1.CommandText = selectOne1;
@@ -65,14 +64,14 @@ namespace WindowsFormsApplication1
                 MySqlDataReader reader1 = cmd1.ExecuteReader();
                 while (reader1.Read())
                 {
-                    quo_id.Text = reader1.GetString("quo_id");
-                    dateTimePicker1.Text = reader1.GetString("quo_date");
+                    rep_id.Text = reader1.GetString("rep_id");
+                    dateTimePicker1.Text = reader1.GetString("rep_date");
                     veh_id.Text = reader1.GetString("veh_id");
                     veh_type.Text = reader1.GetString("veh_type");
                     veh_symtom.Text = reader1.GetString("veh_symtom");
+                    repair_box.Text = reader1.GetString("detail");
                     cusid = reader1.GetString("cus_id");
                     verid = reader1.GetString("ver_id");
-
                 }
                 conn.Close();
                 string selectOne2 = "SELECT * from customers WHERE cus_id = @id LIMIT 1";
@@ -89,10 +88,11 @@ namespace WindowsFormsApplication1
                 ver_id.SelectedItem = verid;
                 ver_id.Enabled = false;
                 button1.Visible = false;
+                repair_box.Enabled = false;
             }
             else
             {
-                string sqlSelectAll = "select * from verify where status ='NEW'";
+                string sqlSelectAll = "select * from verify where status ='GETSPARES'";
                 MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -105,25 +105,7 @@ namespace WindowsFormsApplication1
                 string id = this.id == "" ? ln.ToString() : this.id;
                 this.id = id;
             }
-            quo_id.Text = id;
-            this.RenderGrid();
-        }
-
-        private void cus_id_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string sqlSelectAll = "select verify.*,customers.fullname from verify inner join customers on customers.cus_id = verify.cus_id where ver_id =" + ver_id.Text;
-            MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
-            conn.Open();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                veh_id.Text = reader.GetString("veh_id");
-                veh_type.Text = reader.GetString("veh_type");
-                veh_symtom.Text = reader.GetString("veh_symtom");
-                cusname.Text = reader.GetString("fullname");
-
-            }
-            conn.Close();
+            rep_id.Text = id;
             this.RenderGrid();
         }
         public void RenderGrid()
@@ -170,7 +152,6 @@ namespace WindowsFormsApplication1
                 c_cost = dr.GetDouble("price");
             }
             tb_change.Text = String.Format("{0:#,##0}", c_cost);
-            hiddenval.Text = c_cost.ToString();
             if (c_cost == 0)
             {
                 button1.Enabled = false;
@@ -187,6 +168,24 @@ namespace WindowsFormsApplication1
             this.Close();
         }
 
+        private void ver_id_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sqlSelectAll = "select verify.*,customers.fullname from verify inner join customers on customers.cus_id = verify.cus_id where ver_id =" + ver_id.Text;
+            MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                veh_id.Text = reader.GetString("veh_id");
+                veh_type.Text = reader.GetString("veh_type");
+                veh_symtom.Text = reader.GetString("veh_symtom");
+                cusname.Text = reader.GetString("fullname");
+
+            }
+            conn.Close();
+            this.RenderGrid();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
@@ -194,13 +193,13 @@ namespace WindowsFormsApplication1
             string id = ln.ToString();
 
 
-            string query = "REPLACE INTO quotation (quo_id,quo_date,ver_id,price)" +
-                                "VALUES(@id,NOW(),@ver_id,@price)";
+            string query = "REPLACE INTO repairs (rep_id,rep_date,ver_id,detail)" +
+                                "VALUES(@id,NOW(),@ver_id,@detail)";
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@price", this.hiddenval.Text);
             cmd.Parameters.AddWithValue("@ver_id", ver_id.Text);
+            cmd.Parameters.AddWithValue("@detail", repair_box.Text);
 
             cmd.CommandText = query;
             conn.Open();
@@ -208,7 +207,7 @@ namespace WindowsFormsApplication1
             cmd.Parameters.Clear();
             conn.Close();
 
-            string query1 = "update verify set status ='QUOTATION' where ver_id=@id";
+            string query1 = "update verify set status ='REPAIR' where ver_id=@id";
             MySqlCommand cmd1 = new MySqlCommand(query1, conn);
             cmd1.Parameters.AddWithValue("@id", ver_id.Text);
             cmd1.CommandText = query1;
@@ -218,12 +217,6 @@ namespace WindowsFormsApplication1
             conn.Close();
 
             MessageBox.Show("บันทึกข้อมูลเรียบร้อย");
-
-            string[] data = new string[4];
-            data[0] = id;
-            PrintView rw = new PrintView("print_quotation", data);
-            rw.Show();
-
             this.Close();
             this.Form.RenderGrid();
         }

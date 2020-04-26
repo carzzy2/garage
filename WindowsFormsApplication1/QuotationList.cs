@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace WindowsFormsApplication1
 {
@@ -90,7 +91,11 @@ namespace WindowsFormsApplication1
             }
             if (e.ColumnIndex == 6)
             {
-               
+                string[] data = new string[4];
+                data[0] = id;
+                PrintView rw = new PrintView("print_quotation", data);
+                rw.Show();
+
             }
         }
 

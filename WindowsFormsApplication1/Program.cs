@@ -19,10 +19,11 @@ namespace WindowsFormsApplication1
             string[] user = new string[4];
 
             user[0] = "63722579876780";
-            user[1] = "admin";
-            user[2] = "admin";
-            user[3] = "ฝ่ายซ่อม";
-            Application.Run(new GetSpareList());
+            user[1] = "admin ";
+            user[2] = "เจ้าของกิจการ";
+            user[3] = "admin";
+
+            Application.Run(new Main(user));
         }
     }
 }

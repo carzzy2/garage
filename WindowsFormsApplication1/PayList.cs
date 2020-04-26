@@ -9,25 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace WindowsFormsApplication1
 {
-    public partial class GetSpareList : Form
+    public partial class PayList : Form
     {
         private MySqlConnection conn;
-        public GetSpareList()
+
+        public PayList()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            TakeSpareAdd fm = new TakeSpareAdd(this);
-            fm.Show();
-        }
-
-        private void GetSpareList_Load(object sender, EventArgs e)
+        private void PayList_Load(object sender, EventArgs e)
         {
             this.RenderGrid();
+
         }
         public void RenderGrid()
         {
@@ -38,12 +35,12 @@ namespace WindowsFormsApplication1
 
             if (search.Text != "")
             {
-                where += " AND ver_id LIKE '%" + search.Text + "%'";
+                where += " AND pay_id LIKE '%" + search.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT get_id,get_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'พิมพ์' AS btn_print,'ดู' as btn_view " +
-                "from get_spares " +
-                "INNER JOIN verify on verify.ver_id = get_spares.ver_id " + where + " ORDER BY get_id DESC";
+            string sqlSelectAll = "SELECT pay_id,pay_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'พิมพ์' as btn_print,'ดู' as btn_view " +
+                "from pay " +
+                "INNER JOIN verify on verify.ver_id = pay.ver_id " + where + " ORDER BY pay_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -84,19 +81,16 @@ namespace WindowsFormsApplication1
             string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             if (e.ColumnIndex == 7)
             {
-                TakeSpareAdd da = new TakeSpareAdd(this);
+                PayAdd da = new PayAdd(this);
                 da.ID = id;
                 da.Show();
             }
-            if (e.ColumnIndex == 6)
-            {
-
-            }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            PayAdd da = new PayAdd(this);
+            da.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

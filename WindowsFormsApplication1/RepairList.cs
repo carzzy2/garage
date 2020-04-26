@@ -11,23 +11,19 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class GetSpareList : Form
+    public partial class RepairList : Form
     {
         private MySqlConnection conn;
-        public GetSpareList()
+
+        public RepairList()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            TakeSpareAdd fm = new TakeSpareAdd(this);
-            fm.Show();
-        }
-
-        private void GetSpareList_Load(object sender, EventArgs e)
+        private void RepairList_Load(object sender, EventArgs e)
         {
             this.RenderGrid();
+
         }
         public void RenderGrid()
         {
@@ -41,9 +37,9 @@ namespace WindowsFormsApplication1
                 where += " AND ver_id LIKE '%" + search.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT get_id,get_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'พิมพ์' AS btn_print,'ดู' as btn_view " +
-                "from get_spares " +
-                "INNER JOIN verify on verify.ver_id = get_spares.ver_id " + where + " ORDER BY get_id DESC";
+            string sqlSelectAll = "SELECT rep_id,rep_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'ดู' as btn_view " +
+                "from repairs " +
+                "INNER JOIN verify on verify.ver_id = repairs.ver_id " + where + " ORDER BY rep_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -70,33 +66,25 @@ namespace WindowsFormsApplication1
 
             dataGridView1.Columns[6].HeaderText = "";
             dataGridView1.Columns[6].Width = 50;
-            dataGridView1.Columns[6].DefaultCellStyle.ForeColor = Color.Blue;
+            dataGridView1.Columns[6].DefaultCellStyle.ForeColor = Color.Green;
             dataGridView1.Columns[6].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
-
-            dataGridView1.Columns[7].HeaderText = "";
-            dataGridView1.Columns[7].Width = 50;
-            dataGridView1.Columns[7].DefaultCellStyle.ForeColor = Color.Green;
-            dataGridView1.Columns[7].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
 
         }
         private void dataGridView1_CelltClick(object sender, DataGridViewCellEventArgs e)
         {
             string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 6)
             {
-                TakeSpareAdd da = new TakeSpareAdd(this);
+                RepairAdd da = new RepairAdd(this);
                 da.ID = id;
                 da.Show();
             }
-            if (e.ColumnIndex == 6)
-            {
-
-            }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            RepairAdd da = new RepairAdd(this);
+            da.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

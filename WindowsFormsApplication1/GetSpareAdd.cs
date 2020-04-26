@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class GetSpareAdd : Form
+    public partial class TakeSpareAdd : Form
     {
         private GetSpareList Form;
         private MySqlConnection conn;
@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
                 this.id = value;
             }
         }
-        public GetSpareAdd(GetSpareList FormAdd)
+        public TakeSpareAdd(GetSpareList FormAdd)
         {
             Connection connect = new Connection();
             conn = connect.Connect();
@@ -180,10 +180,6 @@ namespace WindowsFormsApplication1
             conn.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
