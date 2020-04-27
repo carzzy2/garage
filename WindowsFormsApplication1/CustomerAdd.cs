@@ -69,8 +69,37 @@ namespace WindowsFormsApplication1
                 btn_delete.Hide();
             }
         }
+        private void btn_delete_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dr == DialogResult.Yes)
+                {
+                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM customers  WHERE  cus_id = @id", conn);
+                    cmdDel.Parameters.AddWithValue("@id", this.id);
+                    conn.Open();
+                    cmdDel.ExecuteNonQuery();
+                    cmdDel.Parameters.Clear();
+                    conn.Close();
+                    this.Form.RenderGrid();
+                    MessageBox.Show("ลบข้อมูลเรียบร้อย");
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("เกิดข้อผิดพลาดเนื่องจาก : " + ex.Message);
+                conn.Close();
+            }
+        }
 
-        private void btn_save_Click(object sender, EventArgs e)
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_save_Click_1(object sender, EventArgs e)
         {
             string query = "REPLACE INTO customers (cus_id,name,surname,fullname,tel,address)" +
                         " VALUES (@id,@name,@surname,@fullname,@tel,@address)";
@@ -97,37 +126,6 @@ namespace WindowsFormsApplication1
                 this.Form.RenderGrid();
                 MessageBox.Show(msg);
                 this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("เกิดข้อผิดพลาดเนื่องจาก : " + ex.Message);
-                conn.Close();
-            }
-        }
-
-        private void btn_close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_delete_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (dr == DialogResult.Yes)
-                {
-                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM customers  WHERE  cus_id = @id", conn);
-                    cmdDel.Parameters.AddWithValue("@id", this.id);
-                    conn.Open();
-                    cmdDel.ExecuteNonQuery();
-                    cmdDel.Parameters.Clear();
-                    conn.Close();
-                    this.Form.RenderGrid();
-                    MessageBox.Show("ลบข้อมูลเรียบร้อย");
-                    this.Close();
-                }
             }
             catch (Exception ex)
             {

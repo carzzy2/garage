@@ -29,13 +29,17 @@ namespace WindowsFormsApplication1
             conn = connect.Connect();
             MySqlDataAdapter MyDA = new MySqlDataAdapter();
             string where = "WHERE 1";
-            if (tb_search_id.Text != "")
+            if (tb_search_cus_name.Text != "")
             {
-                where += " AND cus_id LIKE '%" + tb_search_id.Text + "%'";
+                where += " AND fullname LIKE '%" + tb_search_cus_name.Text + "%'";
             }
-            if (tb_search_name.Text != "")
+            if (tb_search_cus_tel.Text != "")
             {
-                where += " AND fullname LIKE '%" + tb_search_name.Text + "%'";
+                where += " AND tel LIKE '%" + tb_search_cus_tel.Text + "%'";
+            }
+            if (tb_search_cus_address.Text != "")
+            {
+                where += " AND address LIKE '%" + tb_search_cus_address.Text + "%'";
             }
             string sqlSelectAll = "SELECT cus_id,fullname,tel,address,'แก้ไข' AS btn_edit,'ลบ' AS btn_del from customers " + where + " ORDER BY cus_id DESC";
             // Console.WriteLine(sqlSelectAll);
@@ -92,11 +96,6 @@ namespace WindowsFormsApplication1
                 Console.WriteLine(ex.Message);
             }
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            CustomerAdd acf = new CustomerAdd(this);
-            acf.Show();
-        }
         private void deleteData(string id)
         {
             if (id != "")
@@ -131,6 +130,17 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            CustomerAdd acf = new CustomerAdd(this);
+            acf.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

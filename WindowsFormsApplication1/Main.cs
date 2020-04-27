@@ -68,7 +68,7 @@ namespace WindowsFormsApplication1
         {
             if (this.user[2].ToString() == "เจ้าของกิจการ")
             {
-                CusList fm = new CusList();
+                CustomerList fm = new CustomerList();
                 fm.Show();
             }
             else
@@ -158,6 +158,34 @@ namespace WindowsFormsApplication1
             if (this.user[2].ToString() == "ฝ่ายซ่อม")
             {
                 RepairList fm = new RepairList();
+                fm.Show();
+            }
+            else
+            {
+                MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
+                return;
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (this.user[2].ToString() == "เจ้าของกิจการ")
+            {
+                ReportList fm = new ReportList();
+                fm.Show();
+            }
+            else
+            {
+                MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
+                return;
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (this.user[2].ToString() == "เจ้าของกิจการ")
+            {
+                PayList fm = new PayList();
                 fm.Show();
             }
             else

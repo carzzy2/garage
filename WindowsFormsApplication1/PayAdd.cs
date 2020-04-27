@@ -228,6 +228,12 @@ namespace WindowsFormsApplication1
             conn.Close();
 
             MessageBox.Show("บันทึกข้อมูลเรียบร้อย");
+
+            string[] data = new string[4];
+            data[0] = id;
+            PrintView rw = new PrintView("print_pay", data);
+            rw.Show();
+
             this.Close();
             this.Form.RenderGrid();
         }

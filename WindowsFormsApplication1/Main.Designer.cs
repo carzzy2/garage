@@ -40,12 +40,12 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -198,6 +198,7 @@
             this.button8.Text = "บันทึกข้อมูลการชำระเงิน";
             this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // panel1
             // 
@@ -216,6 +217,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1729, 54);
             this.panel1.TabIndex = 18;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Teal;
+            this.button9.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button9.Font = new System.Drawing.Font("Angsana New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(1433, 3);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(146, 48);
+            this.button9.TabIndex = 18;
+            this.button9.Text = "รายงาน";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // groupBox2
             // 
@@ -282,20 +298,6 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "เลขที่ 41/2 หมู่ 24 ตำบลศิลา ถนน มิตรภาพ อำเภอเมือง จังหวัดขอนแก่น 40000";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Teal;
-            this.button9.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button9.Font = new System.Drawing.Font("Angsana New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(1433, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(146, 48);
-            this.button9.TabIndex = 18;
-            this.button9.Text = "รายงาน";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // Main
             // 

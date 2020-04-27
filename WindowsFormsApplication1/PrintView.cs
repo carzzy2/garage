@@ -17,14 +17,17 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
             ReportDocument rpt = new ReportDocument();
+
+            //MessageBox.Show(data[0]);
             if (report == "print_quotation")
             {
                 rpt.Load(System.IO.Directory.GetParent(@"../../").ToString() + "\\QuotationPrint.rpt");
                 rpt.SetParameterValue("quo_id", data[0]);
             }
-            else if(report == "print_pay") {
-                rpt.Load(System.IO.Directory.GetParent(@"../../").ToString() + "\\QuotationPrint.rpt");
-                rpt.SetParameterValue("quo_id", data[0]);
+            else if (report == "print_pay")
+            {
+                rpt.Load(System.IO.Directory.GetParent(@"../../").ToString() + "\\PayPrint.rpt");
+                rpt.SetParameterValue("pay_id", data[0]);
             }
 
             try

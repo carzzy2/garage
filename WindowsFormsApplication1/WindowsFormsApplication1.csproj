@@ -84,12 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection.cs" />
-    <Compile Include="CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CustomerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +146,36 @@
     <Compile Include="QuotationList.Designer.cs">
       <DependentUpon>QuotationList.cs</DependentUpon>
     </Compile>
+    <Compile Include="PayPrint.cs">
+      <DependentUpon>PayPrint.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportCount.cs">
+      <DependentUpon>ReportCount.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportPay.cs">
+      <DependentUpon>ReportPay.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportSpare.cs">
+      <DependentUpon>ReportSpare.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ReportRepair.cs">
+      <DependentUpon>ReportRepair.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="QuotationPrint.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,11 +194,17 @@
     <Compile Include="RepairList.Designer.cs">
       <DependentUpon>RepairList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewer.cs">
+    <Compile Include="ReportList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportViewer.Designer.cs">
-      <DependentUpon>ReportViewer.cs</DependentUpon>
+    <Compile Include="ReportList.Designer.cs">
+      <DependentUpon>ReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
     </Compile>
     <Compile Include="SparesAdd.cs">
       <SubType>Form</SubType>
@@ -236,10 +266,6 @@
     <Compile Include="VerifyList.Designer.cs">
       <DependentUpon>VerifyList.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="CustomerAdd.resx">
       <DependentUpon>CustomerAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,6 +306,26 @@
     <EmbeddedResource Include="QuotationList.resx">
       <DependentUpon>QuotationList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PayPrint.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PayPrint.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportCount.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportCount.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPay.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportPay.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSpare.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportSpare.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportRepair.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportRepair.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationPrint.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>QuotationPrint.cs</LastGenOutput>
@@ -290,8 +336,14 @@
     <EmbeddedResource Include="RepairList.resx">
       <DependentUpon>RepairList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportViewer.resx">
-      <DependentUpon>ReportViewer.cs</DependentUpon>
+    <EmbeddedResource Include="ReportList.resx">
+      <DependentUpon>ReportList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportView.dje.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SparesAdd.resx">
       <DependentUpon>SparesAdd.cs</DependentUpon>

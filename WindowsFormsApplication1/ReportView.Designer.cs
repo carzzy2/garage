@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class ReportViewer
+    partial class ReportView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportViewer));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportView));
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
-            // ReportViewer
+            // crystalReportViewer1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this.crystalReportViewer1, "crystalReportViewer1");
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            // 
+            // ReportView
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 685);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ReportViewer";
-            this.Text = "รายงาน";
-            this.Load += new System.EventHandler(this.ReportViewer_Load);
+            this.Controls.Add(this.crystalReportViewer1);
+            this.Name = "ReportView";
+            this.Load += new System.EventHandler(this.ReportView_Load);
             this.ResumeLayout(false);
 
         }

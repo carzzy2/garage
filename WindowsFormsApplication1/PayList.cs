@@ -85,6 +85,13 @@ namespace WindowsFormsApplication1
                 da.ID = id;
                 da.Show();
             }
+            if (e.ColumnIndex == 6)
+            {
+                string[] data = new string[4];
+                data[0] = id;
+                PrintView rw = new PrintView("print_pay", data);
+                rw.Show();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

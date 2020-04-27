@@ -16,14 +16,14 @@ namespace WindowsFormsApplication1 {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class ReportRepair : ReportClass {
         
-        public CrystalReport1() {
+        public ReportRepair() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "ReportRepair.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1 {
         
         public override string FullResourceName {
             get {
-                return "WindowsFormsApplication1.CrystalReport1.rpt";
+                return "WindowsFormsApplication1.ReportRepair.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,28 @@ namespace WindowsFormsApplication1 {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_fromdate {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_todate {
+            get {
+                return this.DataDefinition.ParameterFields[1];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedReportRepair : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedReportRepair() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace WindowsFormsApplication1 {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            ReportRepair rpt = new ReportRepair();
             rpt.Site = this.Site;
             return rpt;
         }

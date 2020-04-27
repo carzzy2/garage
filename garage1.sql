@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-04-26 22:19:21
+Date: 2020-04-28 00:30:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,11 +32,11 @@ CREATE TABLE `customers` (
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES ('63722731697322', 'asdas', 'asdas', 'asdas asdas', 'asda', 'asdasd');
-INSERT INTO `customers` VALUES ('63722731804616', 'mm,,m,', 'hjhj', 'mm,,m, hjhj', 'sdfsdf', 'sdff');
-INSERT INTO `customers` VALUES ('63722731817948', 'dsdfsdfsdf', 'sdfsdf', 'dsdfsdfsdf sdfsdf', 'sdfs', 'sdfsdf');
-INSERT INTO `customers` VALUES ('63722731858519', 'aaaa', 'aaa', 'aaaa aaa', 'aa', 'aaa');
-INSERT INTO `customers` VALUES ('63722731921447', 'uuuu', 'uuuu', 'uuuu uuuu', 'uu', 'uuu');
+INSERT INTO `customers` VALUES ('63722731697322', 'วิชัย', 'สมมาตร', 'วิชัย สมมาตร', '082444444', '101/11');
+INSERT INTO `customers` VALUES ('63722731804616', 'ส้ม', 'มาลี', 'ส้ม มาลี', '043222584', '855/5');
+INSERT INTO `customers` VALUES ('63722731817948', 'แดง', 'มาดี', 'แดง มาดี', '080000000', '00/00');
+INSERT INTO `customers` VALUES ('63722731858519', 'กวิน', 'จันทร์เมือง', 'กวิน จันทร์เมือง', '080000001', '558/25');
+INSERT INTO `customers` VALUES ('63722731921447', 'พรธิดา', 'ขวัญเกิ้น', 'พรธิดา ขวัญเกิ้น', '080000002', '22');
 
 -- ----------------------------
 -- Table structure for get_spares
@@ -72,6 +72,7 @@ CREATE TABLE `pay` (
 -- Records of pay
 -- ----------------------------
 INSERT INTO `pay` VALUES ('63723509738176', '2020-04-26 14:55:38', '63723192679341', '8000');
+INSERT INTO `pay` VALUES ('63723626351392', '2020-04-27 23:19:11', '63723352298441', '2000');
 
 -- ----------------------------
 -- Table structure for quotation
@@ -194,7 +195,7 @@ CREATE TABLE `verify` (
 -- ----------------------------
 INSERT INTO `verify` VALUES ('63723191729167', '2020-04-22 22:46:40', 'GETSPARES', '8000', 'asdasd', 'asda', 'sdasdasd', '63722731817948');
 INSERT INTO `verify` VALUES ('63723192679341', '2020-04-22 22:51:26', 'PAY', '8000', 'asdas', 'asdas', 'asdasdasd', '63722731817948');
-INSERT INTO `verify` VALUES ('63723352298441', '2020-04-24 19:11:50', 'REPAIR', '2000', 'หกดเกดเ', 'เกด้้', 'ดเกดเก', '63722731804616');
+INSERT INTO `verify` VALUES ('63723352298441', '2020-04-24 19:11:50', 'PAY', '42000', 'หกดเกดเ', 'เกด้้', 'ดเกดเก', '63722731804616');
 INSERT INTO `verify` VALUES ('63723525505517', '2020-04-26 19:18:32', 'QUOTATION', '2000', 'asd', 'asdas', 'dasdasd', '63722731817948');
 
 -- ----------------------------
@@ -222,3 +223,4 @@ INSERT INTO `verify_item` VALUES ('63723352298441', '63722923232866', '2000', '1
 INSERT INTO `verify_item` VALUES ('63723525488917', '63722923232866', '2000', '1');
 INSERT INTO `verify_item` VALUES ('63723525488917', '63722923210711', '8000', '1');
 INSERT INTO `verify_item` VALUES ('63723525505517', '63722923232866', '2000', '1');
+INSERT INTO `verify_item` VALUES ('63723352298441', '63722923210711', '8000', '5');

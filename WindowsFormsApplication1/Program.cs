@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             user[2] = "เจ้าของกิจการ";
             user[3] = "admin";
 
-            Application.Run(new Main(user));
+            Application.Run(new Login());
         }
     }
 }
