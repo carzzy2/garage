@@ -152,12 +152,6 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ReportCount.cs">
-      <DependentUpon>ReportCount.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="ReportCount1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -166,6 +160,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReportCount1.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReportCount.cs">
+      <DependentUpon>ReportCount.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReportPay.cs">
       <DependentUpon>ReportPay.rpt</DependentUpon>
@@ -319,13 +319,13 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PayPrint.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportCount.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReportCount.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReportCount1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReportCount11.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportCount.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReportCount.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportPay.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
