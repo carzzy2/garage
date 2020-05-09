@@ -52,6 +52,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.hiddenval = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.txtaddress = new System.Windows.Forms.TextBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.txttel = new System.Windows.Forms.TextBox();
             this.groupBox9.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -62,6 +66,8 @@
             this.groupBox8.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // repair_box
@@ -125,7 +131,7 @@
             // 
             this.groupBox9.Controls.Add(this.repair_box);
             this.groupBox9.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(429, 175);
+            this.groupBox9.Location = new System.Drawing.Point(429, 238);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(395, 91);
             this.groupBox9.TabIndex = 65;
@@ -136,7 +142,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.SeaGreen;
             this.button1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(702, 527);
+            this.button1.Location = new System.Drawing.Point(702, 590);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 34);
             this.button1.TabIndex = 72;
@@ -148,7 +154,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Orange;
             this.button3.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button3.Location = new System.Drawing.Point(563, 527);
+            this.button3.Location = new System.Drawing.Point(563, 590);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 73;
@@ -189,7 +195,7 @@
             // 
             this.groupBox7.Controls.Add(this.dataGridView1);
             this.groupBox7.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox7.Location = new System.Drawing.Point(22, 272);
+            this.groupBox7.Location = new System.Drawing.Point(22, 335);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(802, 194);
             this.groupBox7.TabIndex = 69;
@@ -222,7 +228,7 @@
             // 
             this.groupBox1.Controls.Add(this.veh_symtom);
             this.groupBox1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(22, 175);
+            this.groupBox1.Location = new System.Drawing.Point(22, 238);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(401, 91);
             this.groupBox1.TabIndex = 64;
@@ -235,7 +241,7 @@
             this.tb_change.Enabled = false;
             this.tb_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tb_change.ForeColor = System.Drawing.Color.Blue;
-            this.tb_change.Location = new System.Drawing.Point(643, 472);
+            this.tb_change.Location = new System.Drawing.Point(643, 535);
             this.tb_change.Name = "tb_change";
             this.tb_change.Size = new System.Drawing.Size(182, 40);
             this.tb_change.TabIndex = 71;
@@ -251,7 +257,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Angsana New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(601, 478);
+            this.label4.Location = new System.Drawing.Point(601, 541);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 29);
             this.label4.TabIndex = 70;
@@ -307,7 +313,7 @@
             this.hiddenval.Enabled = false;
             this.hiddenval.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.hiddenval.ForeColor = System.Drawing.Color.Blue;
-            this.hiddenval.Location = new System.Drawing.Point(396, 472);
+            this.hiddenval.Location = new System.Drawing.Point(396, 535);
             this.hiddenval.Name = "hiddenval";
             this.hiddenval.Size = new System.Drawing.Size(182, 40);
             this.hiddenval.TabIndex = 74;
@@ -315,11 +321,53 @@
             this.hiddenval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.hiddenval.Visible = false;
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.txtaddress);
+            this.groupBox10.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox10.Location = new System.Drawing.Point(253, 175);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(571, 68);
+            this.groupBox10.TabIndex = 76;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "ที่อยู่";
+            // 
+            // txtaddress
+            // 
+            this.txtaddress.Enabled = false;
+            this.txtaddress.Location = new System.Drawing.Point(6, 24);
+            this.txtaddress.MaxLength = 255;
+            this.txtaddress.Name = "txtaddress";
+            this.txtaddress.Size = new System.Drawing.Size(559, 34);
+            this.txtaddress.TabIndex = 2;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.txttel);
+            this.groupBox11.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(22, 175);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(225, 68);
+            this.groupBox11.TabIndex = 75;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "เบอร์โทรศัพท์";
+            // 
+            // txttel
+            // 
+            this.txttel.Enabled = false;
+            this.txttel.Location = new System.Drawing.Point(6, 24);
+            this.txttel.MaxLength = 255;
+            this.txttel.Name = "txttel";
+            this.txttel.Size = new System.Drawing.Size(213, 34);
+            this.txttel.TabIndex = 2;
+            // 
             // PayAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 570);
+            this.ClientSize = new System.Drawing.Size(846, 630);
+            this.Controls.Add(this.groupBox10);
+            this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.hiddenval);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.button1);
@@ -355,6 +403,10 @@
             this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +437,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox hiddenval;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.TextBox txtaddress;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.TextBox txttel;
     }
 }

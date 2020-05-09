@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
 
                 string cusid = "";
                 string verid = "";
-                string selectOne1 = "SELECT verify.*,pay.pay_id,pay.pay_date,detail,customers.veh_id,customers.veh_type " +
+                string selectOne1 = "SELECT verify.*,pay.pay_id,pay.pay_date,detail,customers.veh_id,customers.veh_type,customers.cus_tel,customers.cus_address " +
                     "from verify " +
                     "left join customers on customers.cus_id = verify.cus_id  INNER JOIN pay on pay.ver_id = verify.ver_id  " +
                     "INNER JOIN repairs on repairs.ver_id = verify.ver_id " +
@@ -74,6 +74,8 @@ namespace WindowsFormsApplication1
                     veh_type.Text = reader1.GetString("veh_type");
                     veh_symtom.Text = reader1.GetString("veh_symtom");
                     repair_box.Text = reader1.GetString("detail");
+                    txttel.Text = reader1.GetString("cus_tel");
+                    txtaddress.Text = reader1.GetString("cus_address");
                     cusid = reader1.GetString("cus_id");
                     verid = reader1.GetString("ver_id");
                 }
@@ -188,7 +190,7 @@ namespace WindowsFormsApplication1
 
         private void ver_id_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlSelectAll = "select verify.*,customers.fullname,repairs.detail,customers.veh_id,customers.veh_type " +
+            string sqlSelectAll = "select verify.*,customers.fullname,repairs.detail,customers.veh_id,customers.veh_type,customers.cus_tel,customers.cus_address " +
                 "from verify " +
                 "inner join customers on customers.cus_id = verify.cus_id " +
                 "inner join repairs on repairs.ver_id = verify.ver_id " +
@@ -203,6 +205,8 @@ namespace WindowsFormsApplication1
                 veh_symtom.Text = reader.GetString("veh_symtom");
                 cusname.Text = reader.GetString("fullname");
                 repair_box.Text = reader.GetString("detail");
+                txttel.Text = reader.GetString("cus_tel");
+                txtaddress.Text = reader.GetString("cus_address");
 
             }
             conn.Close();
