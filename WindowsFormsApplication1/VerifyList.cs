@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
 
             ///ปรับแต่งข้อความ header ของ gridview
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[0].Width = 50;
+            dataGridView1.Columns[0].Width = 100;
             dataGridView1.Columns[1].HeaderText = "วันที่";
             dataGridView1.Columns[1].Width = 140;
             dataGridView1.Columns[2].HeaderText = "ทะเบียนรถ";

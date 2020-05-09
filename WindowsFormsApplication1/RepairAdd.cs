@@ -92,6 +92,18 @@ namespace WindowsFormsApplication1
             }
             else
             {
+                string id2 = "";
+                string query2 = "Select case when Max(substr(rep_id, -6)) + 1 is null then 'REP-000001' else case when (Max(substr(rep_id, -6)) + 1) < 10 then CONCAT('REP-00000',(Max(substr(rep_id, -6)) + 1)) else CONCAT('REP-0000',(Max(substr(rep_id, -6)) + 1)) end end as MaxID from repairs";
+                MySqlCommand cmdQuery = new MySqlCommand(query2, conn);
+                cmdQuery.CommandText = query2;
+                conn.Open();
+                MySqlDataReader dr = cmdQuery.ExecuteReader();
+                while (dr.Read())
+                {
+                    id2 = dr.GetString("MaxID");
+                }
+                conn.Close();
+
                 string sqlSelectAll = "select * from verify where status ='GETSPARES'";
                 MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
                 conn.Open();
@@ -102,7 +114,7 @@ namespace WindowsFormsApplication1
                 }
                 conn.Close();
 
-                string id = this.id == "" ? ln.ToString() : this.id;
+                string id = this.id == "" ? id2 : this.id;
                 this.id = id;
             }
             rep_id.Text = id;
@@ -170,7 +182,7 @@ namespace WindowsFormsApplication1
 
         private void ver_id_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlSelectAll = "select verify.*,customers.fullname,customers.veh_id,customers.veh_type from verify inner join customers on customers.cus_id = verify.cus_id where ver_id =" + ver_id.Text;
+            string sqlSelectAll = "select verify.*,customers.fullname,customers.veh_id,customers.veh_type from verify inner join customers on customers.cus_id = verify.cus_id where ver_id = '" + ver_id.Text +"'";
             MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -190,7 +202,7 @@ namespace WindowsFormsApplication1
         {
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-            string id = ln.ToString();
+            string id = this.id;
 
 
             string query = "REPLACE INTO repairs (rep_id,rep_date,ver_id,detail)" +

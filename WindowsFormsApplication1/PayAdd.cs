@@ -96,6 +96,18 @@ namespace WindowsFormsApplication1
             }
             else
             {
+                string id2 = "";
+                string query2 = "Select case when Max(substr(pay_id, -6)) + 1 is null then 'PAY-000001' else case when (Max(substr(pay_id, -6)) + 1) < 10 then CONCAT('PAY-00000',(Max(substr(pay_id, -6)) + 1)) else CONCAT('PAY-0000',(Max(substr(pay_id, -6)) + 1)) end end as MaxID from pay";
+                MySqlCommand cmdQuery = new MySqlCommand(query2, conn);
+                cmdQuery.CommandText = query2;
+                conn.Open();
+                MySqlDataReader dr = cmdQuery.ExecuteReader();
+                while (dr.Read())
+                {
+                    id2 = dr.GetString("MaxID");
+                }
+                conn.Close();
+
                 string sqlSelectAll = "select * from verify where status ='REPAIR'";
                 MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
                 conn.Open();
@@ -106,7 +118,7 @@ namespace WindowsFormsApplication1
                 }
                 conn.Close();
 
-                string id = this.id == "" ? ln.ToString() : this.id;
+                string id = this.id == "" ? id2 : this.id;
                 this.id = id;
             }
             pay_id.Text = id;
@@ -180,7 +192,7 @@ namespace WindowsFormsApplication1
                 "from verify " +
                 "inner join customers on customers.cus_id = verify.cus_id " +
                 "inner join repairs on repairs.ver_id = verify.ver_id " +
-                "where verify.ver_id = " + ver_id.Text;
+                "where verify.ver_id = '" + ver_id.Text + "'";
             MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -201,7 +213,7 @@ namespace WindowsFormsApplication1
         {
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-            string id = ln.ToString();
+            string id = this.id;
 
 
             string query = "REPLACE INTO pay (pay_id,pay_date,ver_id,price)" +

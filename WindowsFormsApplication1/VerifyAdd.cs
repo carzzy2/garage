@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
             if (this.id != "")
             {
                 string cusid = "";
-                string selectOne = "SELECT * from verify WHERE ver_id = @id LIMIT 1";
+                string selectOne = "SELECT verify.*,customers.fullname,customers.veh_id,customers.veh_type from verify join customers on customers.cus_id = verify.cus_id WHERE verify.ver_id = @id LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(selectOne, conn);
                 cmd.Parameters.AddWithValue("@id", this.id);
                 cmd.CommandText = selectOne;
@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1
                     //veh_type.Text = reader.GetString("veh_type");
                     //veh_type.Text = reader.GetString("veh_type");
                     veh_symtom.Text = reader.GetString("veh_symtom");
-                    cusid = reader.GetString("cus_id");
+                    cusid = reader.GetString("fullname");
                     button1.Text = "แก้ไข";
                 }
                 conn.Close();
@@ -91,24 +91,27 @@ namespace WindowsFormsApplication1
                     cus_id.SelectedItem = reader2.GetString("fullname");
                 }
                 conn.Close();
+                cus_id.SelectedItem = cusid;
+                cus_id.Enabled = false;
             }
             else
             {
-                string selectOne2 = "SELECT case when Max(ver_id)+1 is null then 1 else Max(ver_id)+1 end as numrow from verify";
-                MySqlCommand cmd2 = new MySqlCommand(selectOne2, conn);
+                string id2 = "";
+                string query2 = "Select case when Max(substr(ver_id, -6)) + 1 is null then 'CHK-000001' else case when (Max(substr(ver_id, -6)) + 1) < 10 then CONCAT('CHK-00000',(Max(substr(ver_id, -6)) + 1)) else CONCAT('CHK-0000',(Max(substr(ver_id, -6)) + 1)) end end as MaxID from verify";
+                MySqlCommand cmdQuery = new MySqlCommand(query2, conn);
+                cmdQuery.CommandText = query2;
                 conn.Open();
-                MySqlDataReader reader2 = cmd2.ExecuteReader();
-                while (reader2.Read())
+                MySqlDataReader dr = cmdQuery.ExecuteReader();
+                while (dr.Read())
                 {
-                    string id = this.id == "" ? reader2.GetString("numrow") : this.id;
-                    this.id = id;
+                    id2 = dr.GetString("MaxID");
                 }
                 conn.Close();
 
-                
+                string id = this.id == "" ? id2 : this.id;
+                this.id = id;
             }
             ver_id.Text = id;
-
             this.RenderGrid();
         }
 
@@ -153,7 +156,7 @@ namespace WindowsFormsApplication1
             string sqlSelectAll = "SELECT spares.spares_id,spares.spares_name,verify_item.num,format(verify_item.price,0),format((verify_item.num * verify_item.price),0) as all_price,'ลบ' AS btn_del " +
                 "from verify_item " +
                 "INNER JOIN spares on verify_item.spares_id = spares.spares_id " +
-                "where ver_id=" +this.id + " ";
+                "where ver_id='" +this.id + "' ";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
