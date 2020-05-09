@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
             if (this.id != "")
             {
 
-                string selectOne = "SELECT * from tb_customer WHERE cus_id = @cus_id LIMIT 1";
+                string selectOne = "SELECT * from customers WHERE cus_id = @cus_id LIMIT 1";
                 MySqlCommand cmd = new MySqlCommand(selectOne, conn);
                 cmd.Parameters.AddWithValue("@cus_id", this.id);
                 cmd.CommandText = selectOne;
@@ -50,12 +50,13 @@ namespace WindowsFormsApplication1
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    cus_name.Text = reader.GetString("cus_name");
+                    fullname.Text = reader.GetString("fullname");
                     cus_tel.Text = reader.GetString("cus_tel");
                     cus_email.Text = reader.GetString("cus_email");
                     cus_address.Text = reader.GetString("cus_address");
                     cus_idcard.Text = reader.GetString("cus_idcard");
-                    car_symptoms.Text = reader.GetString("car_symptoms");
+                    veh_id.Text = reader.GetString("veh_id");
+                    veh_type.Text = reader.GetString("veh_type");
 
                     btn_save.Text = "แก้ไข";
                 }
@@ -75,7 +76,7 @@ namespace WindowsFormsApplication1
 
         private void btn_save_Click_1(object sender, EventArgs e)
         {
-            if(cus_name.Text == "" || cus_tel.Text == "" || cus_email.Text == "" || cus_address.Text == "" || cus_idcard.Text == "" || car_symptoms.Text == "")
+            if(fullname.Text == "" || cus_tel.Text == "" || cus_email.Text == "" || cus_address.Text == "" || cus_idcard.Text == "" || veh_id.Text == "" || veh_type.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อมูลให้ครบทุกช่อง (*)");
                 return;
@@ -104,19 +105,20 @@ namespace WindowsFormsApplication1
 
             else
             {
-                string query = "REPLACE INTO tb_customer (cus_id,cus_name,cus_tel,cus_email,cus_address,cus_idcard,car_symptoms)" +
-                            " VALUES (@id,@cus_name,@cus_tel,@cus_email,@cus_address,@cus_idcard,@car_symptoms)";
+                string query = "REPLACE INTO customers (cus_id,fullname,cus_tel,cus_email,cus_address,cus_idcard,veh_id,veh_type)" +
+                            " VALUES (@id,@fullname,@cus_tel,@cus_email,@cus_address,@cus_idcard,@veh_id,@veh_type)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-                string id = this.id == "" ? ln.ToString() : this.id;
+                //long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                string id = this.id == "" ? null : this.id;
 
                 cmd.Parameters.AddWithValue("@id", id);
-                cmd.Parameters.AddWithValue("@cus_name", cus_name.Text);
+                cmd.Parameters.AddWithValue("@fullname", fullname.Text);
                 cmd.Parameters.AddWithValue("@cus_tel", cus_tel.Text);
                 cmd.Parameters.AddWithValue("@cus_email", cus_email.Text);
                 cmd.Parameters.AddWithValue("@cus_address", cus_address.Text);
                 cmd.Parameters.AddWithValue("@cus_idcard", cus_idcard.Text);
-                cmd.Parameters.AddWithValue("@car_symptoms", car_symptoms.Text);
+                cmd.Parameters.AddWithValue("@veh_id", veh_id.Text);
+                cmd.Parameters.AddWithValue("@veh_type", veh_type.Text);
                 cmd.CommandText = query;
                 conn.Open();
                 try
@@ -147,7 +149,7 @@ namespace WindowsFormsApplication1
                 DialogResult dr = MessageBox.Show("คุณต้องการลบข้อมูลนี้หรือไม่ ?", "ลบข้อมุล", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dr == DialogResult.Yes)
                 {
-                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM tb_customer  WHERE  cus_id = @cus_id", conn);
+                    MySqlCommand cmdDel = new MySqlCommand("DELETE FROM customers  WHERE  cus_id = @cus_id", conn);
                     cmdDel.Parameters.AddWithValue("@cus_id", this.id);
                     conn.Open();
                     cmdDel.ExecuteNonQuery();

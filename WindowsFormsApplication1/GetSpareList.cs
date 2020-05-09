@@ -41,9 +41,9 @@ namespace WindowsFormsApplication1
                 where += " AND ver_id LIKE '%" + search.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT get_id,get_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'พิมพ์' AS btn_print,'ดู' as btn_view " +
+            string sqlSelectAll = "SELECT get_id,get_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'ดู' as btn_view " +
                 "from get_spares " +
-                "INNER JOIN verify on verify.ver_id = get_spares.ver_id " + where + " ORDER BY get_id DESC";
+                "INNER JOIN verify on verify.ver_id = get_spares.ver_id left join customers on customers.cus_id = verify.cus_id  " + where + " ORDER BY get_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -68,21 +68,21 @@ namespace WindowsFormsApplication1
             dataGridView1.Columns[5].HeaderText = "ราคา";
             dataGridView1.Columns[5].Width = 150;
 
+            //dataGridView1.Columns[6].HeaderText = "";
+            //dataGridView1.Columns[6].Width = 50;
+            //dataGridView1.Columns[6].DefaultCellStyle.ForeColor = Color.Blue;
+            //dataGridView1.Columns[6].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
             dataGridView1.Columns[6].HeaderText = "";
             dataGridView1.Columns[6].Width = 50;
-            dataGridView1.Columns[6].DefaultCellStyle.ForeColor = Color.Blue;
+            dataGridView1.Columns[6].DefaultCellStyle.ForeColor = Color.Green;
             dataGridView1.Columns[6].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
-
-            dataGridView1.Columns[7].HeaderText = "";
-            dataGridView1.Columns[7].Width = 50;
-            dataGridView1.Columns[7].DefaultCellStyle.ForeColor = Color.Green;
-            dataGridView1.Columns[7].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
 
         }
         private void dataGridView1_CelltClick(object sender, DataGridViewCellEventArgs e)
         {
             string id = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 6)
             {
                 TakeSpareAdd da = new TakeSpareAdd(this);
                 da.ID = id;

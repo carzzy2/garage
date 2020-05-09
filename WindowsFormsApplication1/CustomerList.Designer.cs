@@ -28,20 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerList));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_search_cus_address = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_search_cus_tel = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_search_cus_name = new System.Windows.Forms.TextBox();
-            this.tb_search_cus_address = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tb_search_cus_tel = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,7 +64,23 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(3, 25);
@@ -104,6 +122,46 @@
             this.groupBox2.Size = new System.Drawing.Size(274, 447);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label5.Location = new System.Drawing.Point(6, 150);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 26);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "ค้นหาที่อยู่";
+            // 
+            // tb_search_cus_address
+            // 
+            this.tb_search_cus_address.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.tb_search_cus_address.Location = new System.Drawing.Point(6, 179);
+            this.tb_search_cus_address.MaxLength = 10000;
+            this.tb_search_cus_address.Multiline = true;
+            this.tb_search_cus_address.Name = "tb_search_cus_address";
+            this.tb_search_cus_address.Size = new System.Drawing.Size(249, 32);
+            this.tb_search_cus_address.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label1.Location = new System.Drawing.Point(6, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 26);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "ค้นหาเบอร์โทรศัพท์";
+            // 
+            // tb_search_cus_tel
+            // 
+            this.tb_search_cus_tel.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.tb_search_cus_tel.Location = new System.Drawing.Point(6, 115);
+            this.tb_search_cus_tel.MaxLength = 10;
+            this.tb_search_cus_tel.Multiline = true;
+            this.tb_search_cus_tel.Name = "tb_search_cus_tel";
+            this.tb_search_cus_tel.Size = new System.Drawing.Size(249, 32);
+            this.tb_search_cus_tel.TabIndex = 12;
             // 
             // button3
             // 
@@ -158,46 +216,6 @@
             this.tb_search_cus_name.Size = new System.Drawing.Size(249, 32);
             this.tb_search_cus_name.TabIndex = 2;
             // 
-            // tb_search_cus_address
-            // 
-            this.tb_search_cus_address.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tb_search_cus_address.Location = new System.Drawing.Point(6, 179);
-            this.tb_search_cus_address.MaxLength = 10000;
-            this.tb_search_cus_address.Multiline = true;
-            this.tb_search_cus_address.Name = "tb_search_cus_address";
-            this.tb_search_cus_address.Size = new System.Drawing.Size(249, 32);
-            this.tb_search_cus_address.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label5.Location = new System.Drawing.Point(6, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 26);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "ค้นหาที่อยู่";
-            // 
-            // tb_search_cus_tel
-            // 
-            this.tb_search_cus_tel.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tb_search_cus_tel.Location = new System.Drawing.Point(6, 115);
-            this.tb_search_cus_tel.MaxLength = 10;
-            this.tb_search_cus_tel.Multiline = true;
-            this.tb_search_cus_tel.Name = "tb_search_cus_tel";
-            this.tb_search_cus_tel.Size = new System.Drawing.Size(249, 32);
-            this.tb_search_cus_tel.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label1.Location = new System.Drawing.Point(6, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(111, 26);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "ค้นหาเบอร์โทรศัพท์";
-            // 
             // CustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +226,7 @@
             this.Controls.Add(this.label4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CustomerList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ข้อมูลลูกค้า";
             this.Load += new System.EventHandler(this.CustomerList_Load);
             this.groupBox1.ResumeLayout(false);

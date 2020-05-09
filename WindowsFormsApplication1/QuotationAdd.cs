@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
 
         private void QuotationAdd_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             if (this.id != "")
             {
@@ -56,8 +56,8 @@ namespace WindowsFormsApplication1
 
                 string cusid = "";
                 string verid = "";
-                string selectOne1 = "SELECT verify.*,quotation.quo_id,quotation.quo_date from verify " +
-                    "INNER JOIN quotation on quotation.ver_id = verify.ver_id  WHERE quotation.quo_id = @id LIMIT 1";
+                string selectOne1 = "SELECT verify.*,quotation.quo_id,quotation.quo_date,customers.veh_id,customers.veh_type from verify " +
+                    "INNER JOIN quotation on quotation.ver_id = verify.ver_id join customers on customers.cus_id = verify.cus_id  WHERE quotation.quo_id = @id LIMIT 1";
                 MySqlCommand cmd1 = new MySqlCommand(selectOne1, conn);
                 cmd1.Parameters.AddWithValue("@id", this.id);
                 cmd1.CommandText = selectOne1;
@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
 
         private void cus_id_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlSelectAll = "select verify.*,customers.fullname from verify inner join customers on customers.cus_id = verify.cus_id where ver_id =" + ver_id.Text;
+            string sqlSelectAll = "select verify.*,customers.fullname,customers.veh_id,customers.veh_type from verify inner join customers on customers.cus_id = verify.cus_id where ver_id =" + ver_id.Text;
             MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
             conn.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -189,7 +189,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             string id = ln.ToString();
 

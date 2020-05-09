@@ -27,11 +27,25 @@ namespace WindowsFormsApplication1
             //if (this.user[2].ToString() == "admin")
             //{
             //    status = "เจ้าของกิจการ";
-           //}
-           // else
+            //}
+            // else
             //{
             //    status = "ผู้ใช้งาน";
             //}
+            if (this.user[2].ToString() == "เจ้าของกิจการ")
+            {
+                button4.Visible = false;
+                button7.Visible = false;
+            }
+            else if (this.user[2].ToString() == "ฝ่ายซ่อม")
+            {
+                button3.Visible = false;
+                button2.Visible = false;
+                button5.Visible = false;
+                button6.Visible = false;
+                button8.Visible = false;
+                button9.Visible = false;
+            }
             label1.Text = this.user[1].ToString() + " " + this.user[3].ToString() + " [" + this.user[2].ToString() + "]";
         }
         private void FormShown(object sender, EventArgs e)
@@ -68,7 +82,7 @@ namespace WindowsFormsApplication1
         {
             if (this.user[2].ToString() == "เจ้าของกิจการ")
             {
-                CustomerList fm = new CustomerList();
+                CusList fm = new CusList();
                 fm.Show();
             }
             else
@@ -141,7 +155,7 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (this.user[2].ToString() == "ฝ่ายซ่อม")
+            if (this.user[2].ToString() == "เจ้าของกิจการ")
             {
                 GetSpareList fm = new GetSpareList();
                 fm.Show();

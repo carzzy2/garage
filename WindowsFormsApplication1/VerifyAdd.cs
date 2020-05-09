@@ -23,6 +23,8 @@ namespace WindowsFormsApplication1
 
             this.Form = FormAdd;
             InitializeComponent();
+            veh_id.Enabled = false;
+            veh_type.Enabled = false;
         }
         public string ID
         {
@@ -42,7 +44,7 @@ namespace WindowsFormsApplication1
 
         private void VerifyAdd_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
             string sqlSelectAll = "select * from customers";
@@ -68,9 +70,9 @@ namespace WindowsFormsApplication1
                 {
                     ver_id.Text = reader.GetString("ver_id");
                     dateTimePicker1.Text = reader.GetString("ver_date");
-                    veh_id.Text = reader.GetString("veh_id");
-                    veh_type.Text = reader.GetString("veh_type");
-                    veh_type.Text = reader.GetString("veh_type");
+                    //veh_id.Text = reader.GetString("veh_id");
+                    //veh_type.Text = reader.GetString("veh_type");
+                    //veh_type.Text = reader.GetString("veh_type");
                     veh_symtom.Text = reader.GetString("veh_symtom");
                     cusid = reader.GetString("cus_id");
                     button1.Text = "แก้ไข";
@@ -92,8 +94,18 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                string id = this.id == "" ? ln.ToString() : this.id;
-                this.id = id;
+                string selectOne2 = "SELECT case when Max(ver_id)+1 is null then 1 else Max(ver_id)+1 end as numrow from verify";
+                MySqlCommand cmd2 = new MySqlCommand(selectOne2, conn);
+                conn.Open();
+                MySqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    string id = this.id == "" ? reader2.GetString("numrow") : this.id;
+                    this.id = id;
+                }
+                conn.Close();
+
+                
             }
             ver_id.Text = id;
 
@@ -257,14 +269,16 @@ namespace WindowsFormsApplication1
                     cusid = reader1.GetString("cus_id");
                 }
                 conn.Close();
-                string query = "REPLACE INTO verify (ver_id,ver_date,status,all_price,veh_id,veh_type,veh_symtom,cus_id)" +
-                                    "VALUES(@id,NOW(),'NEW',@sumtotal,@veh_id,@veh_type,@veh_symtom,@cus_id)";
+                string query = "REPLACE INTO verify (ver_id,ver_date,status,all_price,veh_symtom,cus_id)" +
+                                    "VALUES(@id,NOW(),'NEW',@sumtotal,@veh_symtom,@cus_id)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
+                //long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                string id = this.id == "" ? null : this.id;
 
-                cmd.Parameters.AddWithValue("@id", this.id);
+                cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@sumtotal", this.hiddenval.Text);
-                cmd.Parameters.AddWithValue("@veh_id", veh_id.Text);
-                cmd.Parameters.AddWithValue("@veh_type", veh_type.Text);
+                //cmd.Parameters.AddWithValue("@veh_id", veh_id.Text);
+                //cmd.Parameters.AddWithValue("@veh_type", veh_type.Text);
                 cmd.Parameters.AddWithValue("@veh_symtom", veh_symtom.Text);
                 cmd.Parameters.AddWithValue("@cus_id", cusid);
 
@@ -278,6 +292,20 @@ namespace WindowsFormsApplication1
                 this.Form.RenderGrid();
             }
            
+        }
+
+        private void cus_id_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sqlSelectAll = "select * from customers  where fullname ='" + cus_id.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(sqlSelectAll, conn);
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                veh_id.Text = reader.GetString("veh_id");
+                veh_type.Text = reader.GetString("veh_type");
+            }
+            conn.Close();
         }
     }
 }

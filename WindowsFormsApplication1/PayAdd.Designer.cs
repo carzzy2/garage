@@ -71,7 +71,7 @@
             this.repair_box.MaxLength = 255;
             this.repair_box.Multiline = true;
             this.repair_box.Name = "repair_box";
-            this.repair_box.Size = new System.Drawing.Size(790, 61);
+            this.repair_box.Size = new System.Drawing.Size(383, 61);
             this.repair_box.TabIndex = 1;
             // 
             // ver_id
@@ -109,7 +109,7 @@
             this.veh_symtom.MaxLength = 255;
             this.veh_symtom.Multiline = true;
             this.veh_symtom.Name = "veh_symtom";
-            this.veh_symtom.Size = new System.Drawing.Size(790, 61);
+            this.veh_symtom.Size = new System.Drawing.Size(389, 61);
             this.veh_symtom.TabIndex = 1;
             // 
             // veh_id
@@ -125,9 +125,9 @@
             // 
             this.groupBox9.Controls.Add(this.repair_box);
             this.groupBox9.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(22, 272);
+            this.groupBox9.Location = new System.Drawing.Point(429, 175);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(802, 91);
+            this.groupBox9.Size = new System.Drawing.Size(395, 91);
             this.groupBox9.TabIndex = 65;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "ซ่อม";
@@ -136,7 +136,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.SeaGreen;
             this.button1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(695, 755);
+            this.button1.Location = new System.Drawing.Point(702, 527);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 34);
             this.button1.TabIndex = 72;
@@ -148,7 +148,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Orange;
             this.button3.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button3.Location = new System.Drawing.Point(556, 755);
+            this.button3.Location = new System.Drawing.Point(563, 527);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 73;
@@ -189,9 +189,9 @@
             // 
             this.groupBox7.Controls.Add(this.dataGridView1);
             this.groupBox7.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox7.Location = new System.Drawing.Point(22, 369);
+            this.groupBox7.Location = new System.Drawing.Point(22, 272);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(802, 325);
+            this.groupBox7.Size = new System.Drawing.Size(802, 194);
             this.groupBox7.TabIndex = 69;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "รายการ";
@@ -204,7 +204,7 @@
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(6, 23);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(790, 296);
+            this.dataGridView1.Size = new System.Drawing.Size(790, 165);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox6
@@ -224,7 +224,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(22, 175);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(802, 91);
+            this.groupBox1.Size = new System.Drawing.Size(401, 91);
             this.groupBox1.TabIndex = 64;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "อาการรถ";
@@ -235,7 +235,7 @@
             this.tb_change.Enabled = false;
             this.tb_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tb_change.ForeColor = System.Drawing.Color.Blue;
-            this.tb_change.Location = new System.Drawing.Point(636, 700);
+            this.tb_change.Location = new System.Drawing.Point(643, 472);
             this.tb_change.Name = "tb_change";
             this.tb_change.Size = new System.Drawing.Size(182, 40);
             this.tb_change.TabIndex = 71;
@@ -251,7 +251,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Angsana New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(594, 706);
+            this.label4.Location = new System.Drawing.Point(601, 478);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 29);
             this.label4.TabIndex = 70;
@@ -307,7 +307,7 @@
             this.hiddenval.Enabled = false;
             this.hiddenval.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.hiddenval.ForeColor = System.Drawing.Color.Blue;
-            this.hiddenval.Location = new System.Drawing.Point(389, 700);
+            this.hiddenval.Location = new System.Drawing.Point(396, 472);
             this.hiddenval.Name = "hiddenval";
             this.hiddenval.Size = new System.Drawing.Size(182, 40);
             this.hiddenval.TabIndex = 74;
@@ -319,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 801);
+            this.ClientSize = new System.Drawing.Size(846, 570);
             this.Controls.Add(this.hiddenval);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.button1);

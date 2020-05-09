@@ -37,19 +37,22 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cus_idcard = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cus_name = new System.Windows.Forms.TextBox();
+            this.fullname = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cus_email = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cus_address = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.car_symptoms = new System.Windows.Forms.TextBox();
+            this.veh_type = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.veh_id = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_delete
@@ -128,7 +131,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cus_name);
+            this.groupBox1.Controls.Add(this.fullname);
             this.groupBox1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(30, 30);
             this.groupBox1.Name = "groupBox1";
@@ -137,13 +140,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ชื่อลูกค้า *";
             // 
-            // cus_name
+            // fullname
             // 
-            this.cus_name.Location = new System.Drawing.Point(6, 23);
-            this.cus_name.MaxLength = 100;
-            this.cus_name.Name = "cus_name";
-            this.cus_name.Size = new System.Drawing.Size(213, 34);
-            this.cus_name.TabIndex = 1;
+            this.fullname.Location = new System.Drawing.Point(6, 23);
+            this.fullname.MaxLength = 100;
+            this.fullname.Name = "fullname";
+            this.fullname.Size = new System.Drawing.Size(213, 34);
+            this.fullname.TabIndex = 1;
             // 
             // groupBox6
             // 
@@ -185,29 +188,49 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.car_symptoms);
+            this.groupBox5.Controls.Add(this.veh_type);
             this.groupBox5.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(30, 275);
+            this.groupBox5.Location = new System.Drawing.Point(279, 275);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(506, 102);
-            this.groupBox5.TabIndex = 34;
+            this.groupBox5.Size = new System.Drawing.Size(257, 68);
+            this.groupBox5.TabIndex = 35;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "อาการรถ *";
+            this.groupBox5.Text = "ยี่ห้อรถ";
             // 
-            // car_symptoms
+            // veh_type
             // 
-            this.car_symptoms.Location = new System.Drawing.Point(6, 25);
-            this.car_symptoms.Multiline = true;
-            this.car_symptoms.Name = "car_symptoms";
-            this.car_symptoms.Size = new System.Drawing.Size(494, 66);
-            this.car_symptoms.TabIndex = 5;
+            this.veh_type.Location = new System.Drawing.Point(6, 24);
+            this.veh_type.MaxLength = 255;
+            this.veh_type.Name = "veh_type";
+            this.veh_type.Size = new System.Drawing.Size(245, 34);
+            this.veh_type.TabIndex = 2;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.veh_id);
+            this.groupBox7.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(36, 275);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(225, 68);
+            this.groupBox7.TabIndex = 34;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "ทะเบียนรถ";
+            // 
+            // veh_id
+            // 
+            this.veh_id.Location = new System.Drawing.Point(6, 24);
+            this.veh_id.MaxLength = 255;
+            this.veh_id.Name = "veh_id";
+            this.veh_id.Size = new System.Drawing.Size(213, 34);
+            this.veh_id.TabIndex = 2;
             // 
             // CusAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 445);
+            this.ClientSize = new System.Drawing.Size(820, 395);
             this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btn_delete);
@@ -233,6 +256,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -246,12 +271,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox cus_idcard;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox cus_name;
+        private System.Windows.Forms.TextBox fullname;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox cus_email;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox cus_address;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox car_symptoms;
+        private System.Windows.Forms.TextBox veh_type;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox veh_id;
     }
 }

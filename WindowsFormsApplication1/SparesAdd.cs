@@ -101,8 +101,8 @@ namespace WindowsFormsApplication1
                 string query = "REPLACE INTO spares (spares_id,spares_name,spares_qty,spares_unit_price,spares_unit,spares_cost_price,spares_detail)" +
                             " VALUES (@id,@spares_name,@spares_qty,@spares_unit_price,@spares_unit,@spares_cost_price,@spares_detail)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-                long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-                string id = this.id == "" ? ln.ToString() : this.id;
+                //long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                string id = this.id == "" ? null : this.id;
 
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.Parameters.AddWithValue("@spares_name", spares_name.Text);

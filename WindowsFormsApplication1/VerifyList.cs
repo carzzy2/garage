@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
                 where += " AND ver_id LIKE '%" + search.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT ver_id,ver_date,veh_id,veh_type,veh_symtom,format(all_price,0),'แก้ไข' AS btn_edit,'ลบ' AS btn_del from verify " + where + " ORDER BY ver_id DESC";
+            string sqlSelectAll = "SELECT v.ver_id,v.ver_date,c.veh_id,c.veh_type,v.veh_symtom,format(v.all_price,0),'แก้ไข' AS btn_edit,'ลบ' AS btn_del from verify v join customers c on c.cus_id = v.cus_id " + where + " ORDER BY v.ver_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
 
             ///ปรับแต่งข้อความ header ของ gridview
             dataGridView1.Columns[0].HeaderText = "ID";
-            dataGridView1.Columns[0].Width = 200;
+            dataGridView1.Columns[0].Width = 50;
             dataGridView1.Columns[1].HeaderText = "วันที่";
             dataGridView1.Columns[1].Width = 140;
             dataGridView1.Columns[2].HeaderText = "ทะเบียนรถ";

@@ -43,27 +43,27 @@
             this.hiddenval = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_change = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.veh_id = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.veh_type = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cus_id = new System.Windows.Forms.ComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.veh_type = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.veh_id = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.veh_symtom);
             this.groupBox1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 163);
+            this.groupBox1.Location = new System.Drawing.Point(18, 154);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(516, 91);
             this.groupBox1.TabIndex = 28;
@@ -83,7 +83,7 @@
             // 
             this.groupBox2.Controls.Add(this.ver_id);
             this.groupBox2.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Location = new System.Drawing.Point(18, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(225, 63);
             this.groupBox2.TabIndex = 35;
@@ -103,9 +103,9 @@
             // 
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 275);
+            this.groupBox3.Location = new System.Drawing.Point(18, 251);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(777, 279);
+            this.groupBox3.Size = new System.Drawing.Size(777, 199);
             this.groupBox3.TabIndex = 36;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "รายการ";
@@ -118,7 +118,7 @@
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(6, 23);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(762, 250);
+            this.dataGridView1.Size = new System.Drawing.Size(762, 170);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -126,7 +126,7 @@
             // 
             this.btn_add.BackColor = System.Drawing.Color.DodgerBlue;
             this.btn_add.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.Location = new System.Drawing.Point(666, 235);
+            this.btn_add.Location = new System.Drawing.Point(540, 211);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(123, 34);
             this.btn_add.TabIndex = 37;
@@ -138,7 +138,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.SeaGreen;
             this.button1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(666, 640);
+            this.button1.Location = new System.Drawing.Point(666, 506);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 34);
             this.button1.TabIndex = 38;
@@ -150,7 +150,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Orange;
             this.button3.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button3.Location = new System.Drawing.Point(527, 640);
+            this.button3.Location = new System.Drawing.Point(527, 506);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 39;
@@ -162,7 +162,7 @@
             // 
             this.groupBox4.Controls.Add(this.dateTimePicker1);
             this.groupBox4.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(255, 12);
+            this.groupBox4.Location = new System.Drawing.Point(261, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(273, 63);
             this.groupBox4.TabIndex = 36;
@@ -184,7 +184,7 @@
             this.hiddenval.Enabled = false;
             this.hiddenval.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.hiddenval.ForeColor = System.Drawing.Color.Blue;
-            this.hiddenval.Location = new System.Drawing.Point(346, 564);
+            this.hiddenval.Location = new System.Drawing.Point(346, 459);
             this.hiddenval.Name = "hiddenval";
             this.hiddenval.Size = new System.Drawing.Size(182, 40);
             this.hiddenval.TabIndex = 40;
@@ -201,7 +201,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Angsana New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(565, 571);
+            this.label4.Location = new System.Drawing.Point(565, 466);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 29);
             this.label4.TabIndex = 41;
@@ -213,56 +213,18 @@
             this.tb_change.Enabled = false;
             this.tb_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tb_change.ForeColor = System.Drawing.Color.Blue;
-            this.tb_change.Location = new System.Drawing.Point(607, 565);
+            this.tb_change.Location = new System.Drawing.Point(607, 460);
             this.tb_change.Name = "tb_change";
             this.tb_change.Size = new System.Drawing.Size(182, 40);
             this.tb_change.TabIndex = 42;
             this.tb_change.Text = "0";
             this.tb_change.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.veh_id);
-            this.groupBox5.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(12, 89);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(225, 68);
-            this.groupBox5.TabIndex = 29;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "ทะเบียนรถ";
-            // 
-            // veh_id
-            // 
-            this.veh_id.Location = new System.Drawing.Point(6, 24);
-            this.veh_id.MaxLength = 255;
-            this.veh_id.Name = "veh_id";
-            this.veh_id.Size = new System.Drawing.Size(213, 34);
-            this.veh_id.TabIndex = 2;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.veh_type);
-            this.groupBox6.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(255, 89);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(273, 68);
-            this.groupBox6.TabIndex = 30;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "ยี่ห้อรถ";
-            // 
-            // veh_type
-            // 
-            this.veh_type.Location = new System.Drawing.Point(6, 24);
-            this.veh_type.MaxLength = 255;
-            this.veh_type.Name = "veh_type";
-            this.veh_type.Size = new System.Drawing.Size(261, 34);
-            this.veh_type.TabIndex = 2;
-            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.cus_id);
             this.groupBox8.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(555, 13);
+            this.groupBox8.Location = new System.Drawing.Point(561, 13);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(225, 62);
             this.groupBox8.TabIndex = 43;
@@ -277,15 +239,56 @@
             this.cus_id.Size = new System.Drawing.Size(212, 34);
             this.cus_id.TabIndex = 3;
             this.cus_id.Text = "กรุณาเลือก";
+            this.cus_id.SelectedIndexChanged += new System.EventHandler(this.cus_id_SelectedIndexChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.veh_type);
+            this.groupBox5.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(261, 81);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(257, 68);
+            this.groupBox5.TabIndex = 45;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "ยี่ห้อรถ";
+            // 
+            // veh_type
+            // 
+            this.veh_type.Location = new System.Drawing.Point(6, 24);
+            this.veh_type.MaxLength = 255;
+            this.veh_type.Name = "veh_type";
+            this.veh_type.ReadOnly = true;
+            this.veh_type.Size = new System.Drawing.Size(245, 34);
+            this.veh_type.TabIndex = 2;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.veh_id);
+            this.groupBox7.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(18, 81);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(225, 68);
+            this.groupBox7.TabIndex = 44;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "ทะเบียนรถ";
+            // 
+            // veh_id
+            // 
+            this.veh_id.Location = new System.Drawing.Point(6, 24);
+            this.veh_id.MaxLength = 255;
+            this.veh_id.Name = "veh_id";
+            this.veh_id.ReadOnly = true;
+            this.veh_id.Size = new System.Drawing.Size(213, 34);
+            this.veh_id.TabIndex = 2;
             // 
             // VerifyAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 735);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox6);
+            this.ClientSize = new System.Drawing.Size(821, 586);
             this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.tb_change);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.hiddenval);
@@ -308,11 +311,11 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,11 +337,11 @@
         private System.Windows.Forms.TextBox hiddenval;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tb_change;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox veh_id;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox veh_type;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ComboBox cus_id;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox veh_type;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox veh_id;
     }
 }

@@ -130,7 +130,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(891, 383);
+            this.dataGridView1.Size = new System.Drawing.Size(962, 383);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
@@ -140,14 +140,14 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.panel1.Location = new System.Drawing.Point(243, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(910, 392);
+            this.panel1.Size = new System.Drawing.Size(968, 392);
             this.panel1.TabIndex = 16;
             // 
             // VerifyAddSpares
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 406);
+            this.ClientSize = new System.Drawing.Size(1223, 406);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

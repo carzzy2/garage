@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
 
             string sqlSelectAll = "SELECT pay_id,pay_date,veh_id,veh_type,veh_symtom,format(verify.all_price,0),'พิมพ์' as btn_print,'ดู' as btn_view " +
                 "from pay " +
-                "INNER JOIN verify on verify.ver_id = pay.ver_id " + where + " ORDER BY pay_id DESC";
+                "INNER JOIN verify on verify.ver_id = pay.ver_id join customers on customers.cus_id = verify.cus_id  " + where + " ORDER BY pay_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();

@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
 
         private void PayAdd_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             if (this.id != "")
             {
@@ -56,9 +56,9 @@ namespace WindowsFormsApplication1
 
                 string cusid = "";
                 string verid = "";
-                string selectOne1 = "SELECT verify.*,pay.pay_id,pay.pay_date,detail " +
+                string selectOne1 = "SELECT verify.*,pay.pay_id,pay.pay_date,detail,customers.veh_id,customers.veh_type " +
                     "from verify " +
-                    "INNER JOIN pay on pay.ver_id = verify.ver_id  " +
+                    "left join customers on customers.cus_id = verify.cus_id  INNER JOIN pay on pay.ver_id = verify.ver_id  " +
                     "INNER JOIN repairs on repairs.ver_id = verify.ver_id " +
                     "WHERE pay.pay_id = @id LIMIT 1";
                 MySqlCommand cmd1 = new MySqlCommand(selectOne1, conn);
@@ -176,7 +176,7 @@ namespace WindowsFormsApplication1
 
         private void ver_id_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string sqlSelectAll = "select verify.*,customers.fullname,repairs.detail " +
+            string sqlSelectAll = "select verify.*,customers.fullname,repairs.detail,customers.veh_id,customers.veh_type " +
                 "from verify " +
                 "inner join customers on customers.cus_id = verify.cus_id " +
                 "inner join repairs on repairs.ver_id = verify.ver_id " +
@@ -199,7 +199,7 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-01");
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             string id = ln.ToString();
 

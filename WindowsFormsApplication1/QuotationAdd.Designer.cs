@@ -209,7 +209,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.groupBox7.Location = new System.Drawing.Point(12, 273);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(802, 422);
+            this.groupBox7.Size = new System.Drawing.Size(802, 373);
             this.groupBox7.TabIndex = 42;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "รายการ";
@@ -222,7 +222,7 @@
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(6, 23);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(790, 393);
+            this.dataGridView1.Size = new System.Drawing.Size(790, 200);
             this.dataGridView1.TabIndex = 0;
             // 
             // tb_change
@@ -231,7 +231,7 @@
             this.tb_change.Enabled = false;
             this.tb_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tb_change.ForeColor = System.Drawing.Color.Blue;
-            this.tb_change.Location = new System.Drawing.Point(626, 701);
+            this.tb_change.Location = new System.Drawing.Point(626, 539);
             this.tb_change.Name = "tb_change";
             this.tb_change.Size = new System.Drawing.Size(182, 40);
             this.tb_change.TabIndex = 45;
@@ -247,7 +247,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Angsana New", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(584, 707);
+            this.label4.Location = new System.Drawing.Point(584, 545);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 29);
             this.label4.TabIndex = 44;
@@ -259,7 +259,7 @@
             this.hiddenval.Enabled = false;
             this.hiddenval.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.hiddenval.ForeColor = System.Drawing.Color.Blue;
-            this.hiddenval.Location = new System.Drawing.Point(365, 700);
+            this.hiddenval.Location = new System.Drawing.Point(365, 538);
             this.hiddenval.Name = "hiddenval";
             this.hiddenval.Size = new System.Drawing.Size(182, 40);
             this.hiddenval.TabIndex = 43;
@@ -271,7 +271,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Orange;
             this.button3.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.button3.Location = new System.Drawing.Point(546, 756);
+            this.button3.Location = new System.Drawing.Point(546, 594);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 34);
             this.button3.TabIndex = 47;
@@ -283,7 +283,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.SeaGreen;
             this.button1.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(685, 756);
+            this.button1.Location = new System.Drawing.Point(685, 594);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 34);
             this.button1.TabIndex = 46;
@@ -295,7 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 796);
+            this.ClientSize = new System.Drawing.Size(846, 657);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tb_change);

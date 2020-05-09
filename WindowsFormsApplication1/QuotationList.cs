@@ -44,7 +44,7 @@ namespace WindowsFormsApplication1
 
             string sqlSelectAll = "SELECT quo_id,quo_date,veh_id,veh_type,veh_symtom,format(price,0),'พิมพ์' AS btn_print,'ดู' as btn_view " +
                 "from quotation " +
-                "INNER JOIN verify on verify.ver_id = quotation.ver_id " + where + " ORDER BY quo_id DESC";
+                "INNER JOIN verify on verify.ver_id = quotation.ver_id left join customers on customers.cus_id = verify.cus_id " + where + " ORDER BY quo_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
