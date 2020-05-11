@@ -46,8 +46,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.name = new System.Windows.Forms.TextBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.type = new System.Windows.Forms.ComboBox();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -55,7 +53,6 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // pass_again
@@ -97,7 +94,7 @@
             // 
             this.btn_delete.BackColor = System.Drawing.Color.Crimson;
             this.btn_delete.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.Location = new System.Drawing.Point(572, 397);
+            this.btn_delete.Location = new System.Drawing.Point(572, 329);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(123, 34);
             this.btn_delete.TabIndex = 10;
@@ -109,7 +106,7 @@
             // 
             this.btn_save.BackColor = System.Drawing.Color.SeaGreen;
             this.btn_save.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Location = new System.Drawing.Point(572, 317);
+            this.btn_save.Location = new System.Drawing.Point(572, 249);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(123, 34);
             this.btn_save.TabIndex = 8;
@@ -121,7 +118,7 @@
             // 
             this.btn_close.BackColor = System.Drawing.Color.Orange;
             this.btn_close.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_close.Location = new System.Drawing.Point(572, 357);
+            this.btn_close.Location = new System.Drawing.Point(572, 289);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(123, 34);
             this.btn_close.TabIndex = 9;
@@ -143,7 +140,7 @@
             // 
             this.groupBox7.Controls.Add(this.pass_again);
             this.groupBox7.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(30, 374);
+            this.groupBox7.Location = new System.Drawing.Point(30, 306);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(506, 63);
             this.groupBox7.TabIndex = 25;
@@ -154,7 +151,7 @@
             // 
             this.groupBox5.Controls.Add(this.pass);
             this.groupBox5.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(30, 304);
+            this.groupBox5.Location = new System.Drawing.Point(30, 236);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(506, 63);
             this.groupBox5.TabIndex = 30;
@@ -211,7 +208,7 @@
             // 
             this.groupBox4.Controls.Add(this.username);
             this.groupBox4.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(30, 235);
+            this.groupBox4.Location = new System.Drawing.Point(30, 167);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(506, 63);
             this.groupBox4.TabIndex = 29;
@@ -237,36 +234,11 @@
             this.name.Size = new System.Drawing.Size(213, 34);
             this.name.TabIndex = 1;
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.type);
-            this.groupBox8.Font = new System.Drawing.Font("Angsana New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(30, 167);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(225, 62);
-            this.groupBox8.TabIndex = 33;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "ตำแหน่ง *";
-            // 
-            // type
-            // 
-            this.type.AutoCompleteCustomSource.AddRange(new string[] {
-            "ชาย"});
-            this.type.FormattingEnabled = true;
-            this.type.Items.AddRange(new object[] {
-            "เจ้าของกิจการ",
-            "ฝ่ายซ่อม"});
-            this.type.Location = new System.Drawing.Point(6, 22);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(212, 34);
-            this.type.TabIndex = 3;
-            // 
             // UserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 468);
-            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_save);
@@ -295,7 +267,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -319,7 +290,5 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox name;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ComboBox type;
     }
 }

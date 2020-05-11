@@ -56,7 +56,6 @@ namespace WindowsFormsApplication1
                     username.Text = reader.GetString("username");
                     pass.Text = reader.GetString("password");
                     pass_again.Text = reader.GetString("password");
-                    type.Text = reader.GetString("type");
 
                     btn_save.Text = "แก้ไข";
                 }
@@ -76,7 +75,7 @@ namespace WindowsFormsApplication1
 
         private void btn_save_Click_1(object sender, EventArgs e)
         {
-            if(name.Text == "" || surname.Text == "" || sex.Text == "" || tel.Text == "" || username.Text == "" || pass.Text == "" || pass_again.Text == "" || type.Text == "")
+            if(name.Text == "" || surname.Text == "" || sex.Text == "" || tel.Text == "" || username.Text == "" || pass.Text == "" || pass_again.Text == "")
             {
                 MessageBox.Show("กรุณากรอกข้อมูลให้ครบทุกช่อง (*)");
                 return;
@@ -105,7 +104,7 @@ namespace WindowsFormsApplication1
                 cmd.Parameters.AddWithValue("@name", name.Text);
                 cmd.Parameters.AddWithValue("@surname", surname.Text);
                 cmd.Parameters.AddWithValue("@fullname", name.Text + " " + surname.Text);
-                cmd.Parameters.AddWithValue("@type", type.Text);
+                cmd.Parameters.AddWithValue("@type", "เจ้าของกิจการ");
                 cmd.Parameters.AddWithValue("@tel", tel.Text);
                 cmd.Parameters.AddWithValue("@username", username.Text);
                 cmd.Parameters.AddWithValue("@password", pass.Text);

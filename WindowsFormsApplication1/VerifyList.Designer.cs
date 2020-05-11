@@ -53,9 +53,9 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(16, 29);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(191, 33);
+            this.label4.Size = new System.Drawing.Size(81, 33);
             this.label4.TabIndex = 12;
-            this.label4.Text = "ตรวจสอบและประเมินราคา";
+            this.label4.Text = "เสนอราคา";
             // 
             // groupBox1
             // 

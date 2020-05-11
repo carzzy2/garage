@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
                 where += " AND ver_id LIKE '%" + search.Text + "%'";
             }
 
-            string sqlSelectAll = "SELECT v.ver_id,v.ver_date,c.veh_id,c.veh_type,v.veh_symtom,format(v.all_price,0),'แก้ไข' AS btn_edit,'ลบ' AS btn_del from verify v join customers c on c.cus_id = v.cus_id " + where + " ORDER BY v.ver_id DESC";
+            string sqlSelectAll = "SELECT v.ver_id,v.ver_date,c.veh_id,c.veh_type,v.veh_symtom,format(v.all_price,0),'แก้ไข' AS btn_edit,'ลบ' AS btn_del,'พิมพ์' AS btn_print from verify v join customers c on c.cus_id = v.cus_id " + where + " ORDER BY v.ver_id DESC";
             // Console.WriteLine(sqlSelectAll);
             MyDA.SelectCommand = new MySqlCommand(sqlSelectAll, conn);
             DataTable table = new DataTable();
@@ -72,6 +72,11 @@ namespace WindowsFormsApplication1
             dataGridView1.Columns[7].Width = 50;
             dataGridView1.Columns[7].DefaultCellStyle.ForeColor = Color.Red;
             dataGridView1.Columns[7].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
+            dataGridView1.Columns[8].HeaderText = "";
+            dataGridView1.Columns[8].Width = 50;
+            dataGridView1.Columns[8].DefaultCellStyle.ForeColor = Color.Red;
+            dataGridView1.Columns[8].DefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -118,6 +123,14 @@ namespace WindowsFormsApplication1
                     VerifyAdd da = new VerifyAdd(this);
                     da.ID = id;
                     da.Show();
+                }
+                if (e.ColumnIndex == 8)
+                {
+                    string[] data = new string[4];
+                    data[0] = id;
+                    PrintView rw = new PrintView("print_quotation", data);
+                    rw.Show();
+
                 }
             }
             catch (Exception ex)
