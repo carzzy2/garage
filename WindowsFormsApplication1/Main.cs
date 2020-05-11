@@ -34,8 +34,8 @@ namespace WindowsFormsApplication1
             //}
             if (this.user[2].ToString() == "เจ้าของกิจการ")
             {
-                button4.Visible = false;
-                button7.Visible = false;
+                //button4.Visible = false;
+                //button7.Visible = false;
             }
             else if (this.user[2].ToString() == "ฝ่ายซ่อม")
             {
@@ -45,6 +45,7 @@ namespace WindowsFormsApplication1
                 button6.Visible = false;
                 button8.Visible = false;
                 button9.Visible = false;
+                button7.Visible = false;
             }
             label1.Text = this.user[1].ToString() + " " + this.user[3].ToString() + " [" + this.user[2].ToString() + "]";
         }
@@ -124,7 +125,7 @@ namespace WindowsFormsApplication1
         {
             if (this.user[2].ToString() == "เจ้าของกิจการ")
             {
-                QuotationList fm = new QuotationList();
+                VerifyList fm = new VerifyList();
                 fm.Show();
             }
             else
@@ -136,16 +137,16 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (this.user[2].ToString() == "ฝ่ายซ่อม")
-            {
+            //if (this.user[2].ToString() == "ฝ่ายซ่อม")
+            //{
                 VerifyList fm = new VerifyList();
                 fm.Show();
-            }
-            else
-            {
-                MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
-                return;
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
+            //    return;
+           // }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -169,16 +170,16 @@ namespace WindowsFormsApplication1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (this.user[2].ToString() == "ฝ่ายซ่อม")
-            {
+            //if (this.user[2].ToString() == "ฝ่ายซ่อม")
+           // {
                 RepairList fm = new RepairList();
                 fm.Show();
-            }
-            else
-            {
-                MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
-                return;
-            }
+           // }
+            //else
+           // {
+           //     MessageBox.Show("ขออภัย ท่านไม่ได้รับสิทธิ์สำหรับเมนูนี้");
+           //     return;
+           // }
         }
 
         private void button9_Click(object sender, EventArgs e)
