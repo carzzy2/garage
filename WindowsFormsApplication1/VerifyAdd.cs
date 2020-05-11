@@ -272,8 +272,39 @@ namespace WindowsFormsApplication1
                     cusid = reader1.GetString("cus_id");
                 }
                 conn.Close();
+
+                string id2 = "";
+                string query2 = "Select case when Max(substr(quo_id, -6)) + 1 is null then 'QUO-000001' else case when (Max(substr(quo_id, -6)) + 1) < 10 then CONCAT('QUO-00000',(Max(substr(quo_id, -6)) + 1)) else CONCAT('QUO-0000',(Max(substr(quo_id, -6)) + 1)) end end as MaxID from quotation";
+                MySqlCommand cmdQuery = new MySqlCommand(query2, conn);
+                cmdQuery.CommandText = query2;
+                conn.Open();
+                MySqlDataReader dr = cmdQuery.ExecuteReader();
+                while (dr.Read())
+                {
+                    id2 = dr.GetString("MaxID");
+                }
+                conn.Close();
+
+
+                string query11 = "REPLACE INTO quotation (quo_id,quo_date,ver_id,price)" +
+                                    "VALUES(@id,NOW(),@ver_id,@price)";
+                MySqlCommand cmd11 = new MySqlCommand(query11, conn);
+
+                cmd11.Parameters.AddWithValue("@id", id2);
+                cmd11.Parameters.AddWithValue("@price", this.hiddenval.Text);
+                cmd11.Parameters.AddWithValue("@ver_id", ver_id.Text);
+
+                cmd11.CommandText = query11;
+                conn.Open();
+                cmd11.ExecuteNonQuery();
+                cmd11.Parameters.Clear();
+                conn.Close();
+
+
+
+
                 string query = "REPLACE INTO verify (ver_id,ver_date,status,all_price,veh_symtom,cus_id)" +
-                                    "VALUES(@id,NOW(),'NEW',@sumtotal,@veh_symtom,@cus_id)";
+                                    "VALUES(@id,NOW(),'QUOTATION',@sumtotal,@veh_symtom,@cus_id)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 //long ln = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
                 string id = this.id == "" ? null : this.id;
@@ -291,6 +322,12 @@ namespace WindowsFormsApplication1
                 cmd.Parameters.Clear();
                 conn.Close();
                 MessageBox.Show("บันทึกข้อมูลเรียบร้อย");
+
+                string[] data = new string[4];
+                data[0] = id2;
+                PrintView rw = new PrintView("print_quotation", data);
+                rw.Show();
+
                 this.Close();
                 this.Form.RenderGrid();
             }
